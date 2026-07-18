@@ -5,6 +5,9 @@ export interface Bundle {
   summary: string;
   body: string[];
   includes: string[]; // course slugs
+  // Qualifications included in the bundle that aren't sold as standalone
+  // courses (so have no course page of their own to link to).
+  alsoIncludes?: string[];
   cimspaPoints: number;
   hours: number;
   priceOnline: string;
@@ -44,6 +47,7 @@ export const bundles: Bundle[] = [
       'It’s the largest pathway we offer, priced accordingly, and it’s the one most of our students from faith communities choose, since it prepares you to build or lead a genuinely women-only offering from day one.',
     ],
     includes: ['level-2-gym-instructor', 'level-2-exercise-to-music', 'level-3-personal-trainer'],
+    alsoIncludes: ['Women’s Health & Fitness Coaching'],
     cimspaPoints: 24,
     hours: 735,
     priceOnline: '£1,500',

@@ -35,14 +35,19 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
   if (!bundle) notFound();
 
   const includedCourses = bundle.includes.map((s) => getCourse(s)).filter(Boolean);
+  const alsoIncludes = bundle.alsoIncludes ?? [];
+  const qualificationCount = includedCourses.length + alsoIncludes.length;
   const otherBundle = bundles.find((b) => b.slug !== bundle.slug);
+  const otherBundleCount = otherBundle
+    ? otherBundle.includes.length + (otherBundle.alsoIncludes?.length ?? 0)
+    : 0;
 
   const entries = [
     { label: 'CIMSPA points', value: String(bundle.cimspaPoints) },
     { label: 'Total study hours', value: String(bundle.hours) },
     { label: 'Price, online', value: bundle.priceOnline },
     { label: 'Price, hybrid', value: bundle.priceHybrid },
-    { label: 'Qualifications included', value: String(includedCourses.length) },
+    { label: 'Qualifications included', value: String(qualificationCount) },
   ];
 
   return (
@@ -87,6 +92,22 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
                     <span className="shrink-0 text-sm font-semibold text-brand">View &rarr;</span>
                   </a>
                 ))}
+                {alsoIncludes.map((title) => (
+                  <div
+                    key={title}
+                    className="flex items-center justify-between gap-4 rounded-xl border border-line bg-card p-5"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="inline-flex items-center rounded-full border border-moss/60 px-2.5 py-0.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-moss">
+                        Specialism
+                      </span>
+                      <span className="font-heading text-base font-medium text-ink">{title}</span>
+                    </div>
+                    <span className="shrink-0 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-muted">
+                      Bundle exclusive
+                    </span>
+                  </div>
+                ))}
               </div>
             </Reveal>
 
@@ -98,7 +119,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
                   </p>
                   <p className="mb-4 text-base leading-relaxed text-muted">
                     The <strong className="text-ink">{otherBundle.title}</strong> covers{' '}
-                    {otherBundle.includes.length} qualifications across {otherBundle.hours} study
+                    {otherBundleCount} qualifications across {otherBundle.hours} study
                     hours — {otherBundle.bestFor.toLowerCase()}
                   </p>
                   <a href={`/bundles/${otherBundle.slug}`} className="text-sm font-semibold text-brand">

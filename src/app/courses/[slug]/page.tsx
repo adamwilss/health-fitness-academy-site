@@ -36,6 +36,9 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   if (!course) notFound();
 
   const bundle = course.bundleSlug ? getBundle(course.bundleSlug) : undefined;
+  const bundleOthers = bundle
+    ? bundle.includes.length + (bundle.alsoIncludes?.length ?? 0) - 1
+    : 0;
   const related = courses.filter((c) => c.slug !== course.slug && c.level === course.level).slice(0, 3);
 
   const entries = [
@@ -88,7 +91,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                   </p>
                   <p className="mb-4 text-base leading-relaxed text-muted">
                     This course is included in the <strong className="text-ink">{bundle.title}</strong>, alongside{' '}
-                    {bundle.includes.length - 1} other qualification{bundle.includes.length - 1 === 1 ? '' : 's'}, for less than
+                    {bundleOthers} other qualification{bundleOthers === 1 ? '' : 's'}, for less than
                     enrolling separately.
                   </p>
                   <a href={`/bundles/${bundle.slug}`} className="text-sm font-semibold text-brand">

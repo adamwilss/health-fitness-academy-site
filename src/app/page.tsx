@@ -4,13 +4,14 @@ import { ArrowRight, Quote } from 'lucide-react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import Ticker from '@/components/Ticker';
 import SectionLabel from '@/components/SectionLabel';
 import Reveal from '@/components/Reveal';
 import RevealGroup from '@/components/RevealGroup';
 import LevelBadge from '@/components/LevelBadge';
 import BundleCard from '@/components/BundleCard';
+import CourseCard from '@/components/CourseCard';
 import CtaBand from '@/components/CtaBand';
-import SealBadge from '@/components/SealBadge';
 import { courses } from '@/data/courses';
 import { bundles } from '@/data/bundles';
 import { testimonials } from '@/data/testimonials';
@@ -51,24 +52,11 @@ export default function HomePage() {
       <Nav />
       <Hero />
 
-      {/* Trust bar */}
-      <section className="border-b border-line bg-bg-secondary">
-        <div className="mx-auto max-w-6xl px-5 py-7 sm:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-5 sm:justify-between">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
-              Regulated &amp; accredited by
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              {SITE.accreditations.map((body, i) => (
-                <SealBadge key={body} label={body} index={i} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* The ledger in motion — real credentials on a slow conveyor */}
+      <Ticker />
 
       {/* Proof ribbon — the numbers behind the promise */}
-      <section className="border-b border-line bg-bg-secondary">
+      <section data-tour="proof-ribbon" className="border-b border-line bg-bg-secondary">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-4">
           {[
             { value: SITE.stats.successRate, label: 'Graduate success rate' },
@@ -77,10 +65,10 @@ export default function HomePage() {
             { value: '£300', label: 'Courses from' },
           ].map((stat) => (
             <div key={stat.label} className="bg-card px-6 py-8 text-center">
-              <p className="font-heading text-2xl font-semibold text-brand sm:text-[1.75rem]">
+              <p className="font-serif text-3xl italic text-brand sm:text-4xl">
                 {stat.value}
               </p>
-              <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+              <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
                 {stat.label}
               </p>
             </div>
@@ -140,14 +128,30 @@ export default function HomePage() {
           </Reveal>
           <RevealGroup className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             {levelGroups.map((group, i) => (
-              <div
+              <a
                 key={group.level}
-                className="scroll-reveal rounded-2xl border border-line bg-card p-7"
+                href="/courses"
+                className="scroll-reveal card-lift group relative flex min-h-[168px] flex-col overflow-hidden rounded-2xl border border-line bg-card p-7 hover:border-brand/50"
                 style={{ '--sr-delay': `${i * 100}ms` } as CSSProperties}
               >
+                {/* Ghost glyph — the level itself, stamped large and faint */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -bottom-9 -right-2 select-none font-serif text-[7rem] italic leading-none text-ink/[0.06] transition-colors duration-500 group-hover:text-brand/[0.12]"
+                >
+                  {group.label === 'CPD' ? 'CPD' : group.level}
+                </span>
                 <LevelBadge level={group.level} label={group.label} />
-                <p className="mt-4 text-sm leading-relaxed text-muted">{group.blurb}</p>
-              </div>
+                <p className="mt-4 max-w-[15rem] text-sm leading-relaxed text-muted">{group.blurb}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand">
+                  Browse {group.label} courses
+                  <ArrowRight
+                    size={14}
+                    strokeWidth={2}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </span>
+              </a>
             ))}
           </RevealGroup>
           <Reveal delay={150} className="mt-10">
@@ -173,28 +177,13 @@ export default function HomePage() {
           </Reveal>
           <RevealGroup className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             {featuredCourses.map((course, i) => (
-              <a
+              <div
                 key={course.slug}
-                href={`/courses/${course.slug}`}
+                className="scroll-reveal h-full"
                 style={{ '--sr-delay': `${i * 90}ms` } as CSSProperties}
-                className="scroll-reveal group card-lift flex flex-col rounded-2xl border border-line bg-card p-7 hover:border-brand/50"
               >
-                <div className="mb-4">
-                  <LevelBadge level={course.level} label={course.levelLabel} size="sm" />
-                </div>
-                <h3 className="mb-2 font-heading text-lg font-semibold leading-snug text-ink">
-                  {course.title}
-                </h3>
-                <p className="mb-5 flex-1 text-sm leading-relaxed text-muted">{course.tagline}</p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-                  View course
-                  <ArrowRight
-                    size={15}
-                    strokeWidth={2}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </span>
-              </a>
+                <CourseCard course={course} />
+              </div>
             ))}
           </RevealGroup>
         </div>
@@ -236,28 +225,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-bg">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+      {/* Values — a dusk interlude, each value signed like a ledger entry */}
+      <section className="relative overflow-hidden bg-dusk">
+        <div aria-hidden className="bg-ledger-lines-dusk pointer-events-none absolute inset-0" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 -top-32 h-[460px] w-[460px] rounded-full animate-slow-pulse"
+          style={{
+            background: 'radial-gradient(circle, rgb(var(--brand) / 0.13) 0%, transparent 65%)',
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <SectionLabel label="Our commitment" />
-            <h2 className="mb-12 max-w-2xl font-heading text-[clamp(1.75rem,3.6vw,2.5rem)] font-semibold leading-[1.15] text-ink">
+            <SectionLabel label="Our commitment" tone="dusk" />
+            <h2 className="mb-12 max-w-2xl font-serif text-[clamp(1.9rem,4vw,2.75rem)] italic leading-[1.15] text-mist">
               Courses created by women, for women.
             </h2>
           </Reveal>
-          <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <RevealGroup className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
             {SITE.values.map((value, i) => (
               <div
                 key={value.name}
-                className="scroll-reveal"
+                className="scroll-reveal border-t border-mist/15 pt-5"
                 style={{ '--sr-delay': `${i * 80}ms` } as CSSProperties}
               >
-                <p className="mb-2 font-heading text-base font-semibold text-ink">{value.name}</p>
-                <p className="text-sm leading-relaxed text-muted">{value.description}</p>
+                <p className="mb-2.5 flex items-center gap-2.5 font-heading text-base font-semibold text-mist">
+                  <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                  {value.name}
+                </p>
+                <p className="text-sm leading-relaxed text-muted-dusk">{value.description}</p>
               </div>
             ))}
           </RevealGroup>
-          <Reveal delay={150} className="mt-10">
+          <Reveal delay={150} className="mt-12">
             <a
               href="/our-commitment"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand"

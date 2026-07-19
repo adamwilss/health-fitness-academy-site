@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import { Check, Phone, Quote, ArrowRight } from 'lucide-react';
 import Logo from '@/components/Logo';
+import Ticker from '@/components/Ticker';
 import Reveal from '@/components/Reveal';
 import RevealGroup from '@/components/RevealGroup';
 import SectionLabel from '@/components/SectionLabel';
@@ -172,10 +173,10 @@ export default function BecomeAPersonalTrainerPage() {
             { value: l2.priceOnline, label: 'Courses from' },
           ].map((stat) => (
             <div key={stat.label} className="bg-card px-6 py-8 text-center">
-              <p className="font-heading text-2xl font-semibold text-brand sm:text-[1.75rem]">
+              <p className="font-serif text-3xl italic text-brand sm:text-4xl">
                 {stat.value}
               </p>
-              <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+              <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
                 {stat.label}
               </p>
             </div>
@@ -337,6 +338,7 @@ export default function BecomeAPersonalTrainerPage() {
       </section>
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
+      <Ticker />
       <section className="relative overflow-hidden bg-dusk">
         <div
           aria-hidden

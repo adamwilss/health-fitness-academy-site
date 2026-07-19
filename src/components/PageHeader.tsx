@@ -1,9 +1,11 @@
 import SectionLabel from './SectionLabel';
+import SealMark from './SealMark';
 
 // Shared header for interior pages.
 // epic=true: full grid + animated glow + gradient title (home / bundle pages only).
-// Quiet mode: clean parchment background, confident type, single saffron rule via
-// SectionLabel. No gradient, no grid, no glow — Coppard-benchmark restraint.
+// Quiet mode keeps the restrained type but breathes: faint ledger feint,
+// a warm saffron corner glow, and the ghost of the Academy seal — so no
+// page opens on to a flat wall of parchment.
 export default function PageHeader({
   eyebrow,
   title,
@@ -18,7 +20,7 @@ export default function PageHeader({
   return (
     <section className="relative overflow-hidden bg-bg">
       {/* Ambient grid + glow — ONLY on epic headers (home / bundle pages). */}
-      {epic && (
+      {epic ? (
         <>
           <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
           <div
@@ -28,6 +30,25 @@ export default function PageHeader({
               background:
                 'radial-gradient(circle, rgb(var(--brand) / 0.12) 0%, transparent 62%)',
             }}
+          />
+        </>
+      ) : (
+        <>
+          <div
+            aria-hidden
+            className="bg-ledger-lines pointer-events-none absolute inset-0 opacity-60"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-24 -top-32 h-[420px] w-[420px] rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle, rgb(var(--brand) / 0.10) 0%, transparent 62%)',
+            }}
+          />
+          <SealMark
+            id="page-header"
+            className="pointer-events-none absolute -bottom-20 -right-12 hidden h-64 w-64 text-ink opacity-[0.05] md:block"
           />
         </>
       )}

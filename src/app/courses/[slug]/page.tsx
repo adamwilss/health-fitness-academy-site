@@ -240,7 +240,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
               </div>
 
               {/* Course fees — transparent pricing from the official brochure */}
-              <div className="mb-5 rounded-2xl border border-brand/25 bg-card p-6 sm:p-7">
+              <div data-tour="fees-card" className="mb-5 rounded-2xl border border-brand/25 bg-card p-6 sm:p-7">
                 <p className="mb-5 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted">
                   Course fees
                 </p>

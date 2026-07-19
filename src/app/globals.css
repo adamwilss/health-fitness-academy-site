@@ -431,6 +431,62 @@ html.js .reveal-group.is-visible .scroll-reveal {
   }
 }
 
+/*
+ * ── Credential ticker ────────────────────────────────────────────────────
+ * A slow conveyor of real credentials on dusk — the ledger in motion.
+ * Two identical halves; the track slides one half-width and loops.
+ */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 48s linear infinite;
+}
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/*
+ * ── Walkthrough spotlight ────────────────────────────────────────────────
+ * The demo tour's pointing finger: a saffron ring pressed around the
+ * element being talked about, pulsing like a seal being stamped.
+ */
+.tour-ring {
+  position: absolute;
+  z-index: 60;
+  pointer-events: none;
+  border: 2px solid rgb(var(--brand));
+  border-radius: 18px;
+  animation: tour-pulse 2.2s ease-in-out infinite;
+}
+@keyframes tour-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 5px rgb(var(--brand) / 0.14),
+      0 0 34px rgb(var(--brand) / 0.28);
+  }
+  50% {
+    box-shadow:
+      0 0 0 10px rgb(var(--brand) / 0.22),
+      0 0 52px rgb(var(--brand) / 0.45);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-ring {
+    animation: none;
+    box-shadow:
+      0 0 0 6px rgb(var(--brand) / 0.16),
+      0 0 34px rgb(var(--brand) / 0.3);
+  }
+}
+
 /* ── Hero epic accents ──────────────────────────────────────────────── */
 .text-gradient-brand {
   background-image: linear-gradient(

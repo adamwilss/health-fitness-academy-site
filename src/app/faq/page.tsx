@@ -38,7 +38,9 @@ export default function FaqPage() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <Accordion items={faqs} />
+            <div data-tour="faq-list">
+              <Accordion items={faqs} />
+            </div>
           </Reveal>
         </div>
       </section>

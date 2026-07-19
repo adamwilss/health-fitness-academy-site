@@ -29,7 +29,9 @@ export default function ContactPage() {
       <section className="bg-bg">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <Reveal>
-            <ContactForm />
+            <div data-tour="contact-form">
+              <ContactForm />
+            </div>
             {/* Trust line below form */}
             <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-line pt-6">
               <StarRating size={14} className="text-brand" />

@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { ArrowRight, Check, PiggyBank, CalendarClock, Percent } from 'lucide-react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import Ticker from '@/components/Ticker';
 import PageHeader from '@/components/PageHeader';
 import Reveal from '@/components/Reveal';
 import RevealGroup from '@/components/RevealGroup';
@@ -136,10 +137,10 @@ export default function PricingPage() {
             { value: '0%', label: 'Interest options available' },
           ].map((stat) => (
             <div key={stat.label} className="bg-card px-6 py-8 text-center">
-              <p className="font-heading text-2xl font-semibold text-brand sm:text-[1.75rem]">
+              <p className="font-serif text-3xl italic text-brand sm:text-4xl">
                 {stat.value}
               </p>
-              <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+              <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
                 {stat.label}
               </p>
             </div>
@@ -162,7 +163,9 @@ export default function PricingPage() {
             </p>
           </Reveal>
           <Reveal delay={100}>
-            <PriceTable rows={qualifications} showFastTrack />
+            <div data-tour="price-table">
+              <PriceTable rows={qualifications} showFastTrack />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -327,6 +330,8 @@ export default function PricingPage() {
           </Reveal>
         </div>
       </section>
+
+      <Ticker />
 
       <CtaBand
         eyebrow="Found your course?"

@@ -165,7 +165,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
       {/* ── Stats Ribbon ─────────────────────────────────────────────── */}
       <Reveal>
         {/* border-t grounds the ribbon against the hero section above */}
-        <section className="border-t border-line bg-bg-secondary">
+        <section className="border-t border-line bg-bg-secondary" data-tour="bundle-stats">
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-5">
             {[
               { value: String(bundle.hours), label: 'Study Hours' },
@@ -175,10 +175,10 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
               { value: bundle.priceHybrid, label: 'Hybrid From' },
             ].map((stat) => (
               <div key={stat.label} className="bg-card px-6 py-8 text-center">
-                <p className="font-heading text-2xl font-semibold text-brand sm:text-[1.75rem]">
+                <p className="font-serif text-3xl italic text-brand sm:text-[2.1rem]">
                   {stat.value}
                 </p>
-                <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
                   {stat.label}
                 </p>
               </div>

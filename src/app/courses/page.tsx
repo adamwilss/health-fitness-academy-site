@@ -29,7 +29,7 @@ export default function CoursesIndexPage() {
       />
 
       <section className="bg-bg">
-        <div className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-24">
+        <div className="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-24" data-tour="course-grid">
           <CourseFilter courses={courses} />
         </div>
       </section>

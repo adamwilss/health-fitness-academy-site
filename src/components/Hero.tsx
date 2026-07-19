@@ -9,12 +9,9 @@ import { SITE } from '@/data/site';
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Homepage hero — the one orchestrated motion moment the brief calls for.
- * Each headline line rises out of a mask (not a bare opacity fade), a
- * saffron underline draws itself beneath the final word like a pen stroke,
- * and then the wax-seal "stamp" settles into place with a soft ink ripple —
- * a qualification being awarded. Everything renders in its final state
- * immediately under prefers-reduced-motion.
+ * Homepage hero — split layout: text left, coaching photo right.
+ * The photo is foreground imagery, not a buried background texture.
+ * Under prefers-reduced-motion, everything renders in its final state.
  */
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -49,22 +46,7 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-dusk">
-      {/* Hero background photo — coaching/teaching shot */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <Image
-          src="/images/hfa-02-pt-coaching.jpg"
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
-          quality={80}
-        />
-        {/* Dark overlay to preserve text readability and blend with dusk palette */}
-        <div className="absolute inset-0 bg-dusk/80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-dusk/40 via-dusk/70 to-dusk/95" />
-      </div>
-      {/* Ambient grid + saffron glow — epic treatment */}
+      {/* Ambient grid + saffron glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
       <div
         aria-hidden
@@ -81,13 +63,14 @@ export default function Hero() {
         className="pointer-events-none absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full"
         style={{ background: 'radial-gradient(circle, rgb(var(--moss) / 0.14) 0%, transparent 70%)' }}
       />
-      {/* Ghost seal watermark — visual weight where a photo would sit. */}
+      {/* Ghost seal watermark */}
       <SealMark
         id="hero"
         className="pointer-events-none absolute -bottom-24 -right-20 hidden h-[460px] w-[460px] text-mist opacity-[0.05] lg:block"
       />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 pb-20 pt-32 sm:px-8 sm:pb-28 sm:pt-40 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-10 px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-14">
+        {/* Text column */}
         <div>
           <motion.p
             initial={reduceMotion ? undefined : { opacity: 0, y: 12 }}
@@ -100,8 +83,6 @@ export default function Hero() {
 
           <h1 className="max-w-2xl font-serif text-[clamp(2.4rem,6vw,4.2rem)] font-normal leading-[1.08] text-mist">
             {lines.map((line, i) => (
-              /* Outer span is the mask; slight padding keeps italic
-                 descenders from clipping once the line has landed. */
               <span
                 key={i}
                 className="block overflow-hidden pb-[0.14em] pr-[0.08em] [margin-bottom:-0.14em]"
@@ -144,9 +125,57 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* The stamp: a saffron seal that settles into place after the copy
-            lands, with a soft ink ripple on impact. On mobile it reads as a
-            signature row rather than a floating badge. */}
+        {/* Photo column — the coaching shot, clearly visible */}
+        <motion.div
+          initial={reduceMotion ? undefined : { opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.4, ease: EASE_OUT }}
+          className="relative hidden lg:block"
+        >
+          <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '4/5' }}>
+            <Image
+              src="/images/hfa-02-pt-coaching.jpg"
+              alt="Personal trainer guiding a client through a strength exercise in the Health Fitness Academy studio"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 0px, 480px"
+              priority
+              quality={85}
+            />
+            {/* Subtle vignette edge — just enough to blend with dusk, not hide the photo */}
+            <div className="absolute inset-0 bg-gradient-to-t from-dusk/30 via-transparent to-transparent" />
+          </div>
+          {/* Caption bar beneath the photo */}
+          <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-muted-dusk">
+            Prestwich, Manchester &amp; online across the UK
+          </p>
+        </motion.div>
+
+        {/* Mobile: show the photo as a smaller inline image below text */}
+        <motion.div
+          initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: EASE_OUT }}
+          className="relative lg:hidden"
+        >
+          <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '16/10' }}>
+            <Image
+              src="/images/hfa-02-pt-coaching.jpg"
+              alt="Personal trainer guiding a client through a strength exercise in the Health Fitness Academy studio"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dusk/25 via-transparent to-transparent" />
+          </div>
+          <p className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-muted-dusk">
+            Prestwich, Manchester &amp; online across the UK
+          </p>
+        </motion.div>
+
+        {/* The stamp: seal settles into place after copy lands */}
         <motion.div
           initial={reduceMotion ? undefined : { opacity: 0, scale: 1.6, rotate: -18 }}
           animate={{ opacity: 1, scale: 1, rotate: -3 }}
@@ -155,7 +184,7 @@ export default function Hero() {
               ? { duration: 0 }
               : { duration: 0.9, delay: 1.25, ease: [0.2, 0.9, 0.3, 1] }
           }
-          className="flex items-center gap-5 lg:block"
+          className="absolute -bottom-8 right-0 hidden lg:block"
         >
           <span className="relative block shrink-0">
             {!reduceMotion && (
@@ -167,7 +196,7 @@ export default function Hero() {
                 className="absolute inset-0 rounded-full border-2 border-brand"
               />
             )}
-            <span className="ledger-seal relative flex h-28 w-28 flex-col items-center justify-center rounded-full border-4 border-brand bg-dusk text-center sm:h-32 sm:w-32 lg:h-36 lg:w-36">
+            <span className="ledger-seal relative flex h-28 w-28 flex-col items-center justify-center rounded-full border-4 border-brand bg-dusk text-center sm:h-32 sm:w-32">
               <span
                 aria-hidden
                 className="absolute inset-1.5 rounded-full border border-dashed border-brand/50"
@@ -180,11 +209,6 @@ export default function Hero() {
                 OFQUAL Reg.
               </span>
             </span>
-          </span>
-          <span className="block max-w-[190px] font-mono text-[0.6rem] uppercase leading-relaxed tracking-[0.18em] text-muted-dusk lg:hidden">
-            Prestwich, Manchester
-            <br />
-            &amp; online across the UK
           </span>
         </motion.div>
       </div>

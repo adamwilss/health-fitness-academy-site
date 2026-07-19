@@ -47,8 +47,7 @@ export default function CoursesIndexPage() {
               sizes="100vw"
               quality={80}
             />
-            <div className="absolute inset-0 bg-dusk/50" />
-            <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/40" />
           </div>
         </Reveal>
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">

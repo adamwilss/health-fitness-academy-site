@@ -45,7 +45,7 @@ export default function TestimonialsPage() {
                   sizes="(max-width: 768px) 100vw, 768px"
                   quality={50}
                 />
-                <div className="absolute inset-0 bg-dusk/88" />
+                <div className="absolute inset-0 bg-dusk/25" />
               </div>
               {/* Opening mark: large, positioned top-left like a broadsheet. */}
               <Quote

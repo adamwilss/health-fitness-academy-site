@@ -113,8 +113,8 @@ export default function BecomeAPersonalTrainerPage() {
             priority
             quality={75}
           />
-          <div className="absolute inset-0 bg-dusk/82" />
-          <div className="absolute inset-0 bg-gradient-to-b from-dusk/50 via-dusk/75 to-dusk/95" />
+          <div className="absolute inset-0 bg-dusk/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/40" />
         </div>
         <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
         <div aria-hidden className="bg-ledger-lines-dusk pointer-events-none absolute inset-0" />
@@ -329,7 +329,7 @@ export default function BecomeAPersonalTrainerPage() {
                   sizes="(max-width: 768px) 100vw, 768px"
                   quality={50}
                 />
-                <div className="absolute inset-0 bg-dusk/88" />
+                <div className="absolute inset-0 bg-dusk/25" />
               </div>
               <Quote size={36} strokeWidth={1.25} className="mb-5 text-brand" aria-hidden />
               <p className="font-serif text-xl italic leading-relaxed text-mist sm:text-2xl">

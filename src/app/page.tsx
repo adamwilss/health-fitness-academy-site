@@ -88,8 +88,8 @@ export default function HomePage() {
             sizes="100vw"
             quality={80}
           />
-          <div className="absolute inset-0 bg-dusk/55" />
-          <div className="absolute inset-0 bg-gradient-to-b from-dusk/30 via-transparent to-dusk/60" />
+          {/* Subtle edge gradients — just enough for text legibility, photo stays vivid */}
+          <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/40" />
           <div className="relative mx-auto flex h-full max-w-6xl items-center px-5 sm:px-8">
             <p className="max-w-md font-serif text-2xl italic leading-snug text-mist sm:text-3xl">
               Real qualifications. Real training. Real confidence.
@@ -205,6 +205,40 @@ export default function HomePage() {
                 style={{ '--sr-delay': `${i * 90}ms` } as CSSProperties}
               >
                 <CourseCard course={course} />
+              </div>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
+      {/* Photo gallery — real training, no overlays, images as content */}
+      <section className="bg-bg-secondary">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
+          <Reveal>
+            <SectionLabel label="Inside the Academy" />
+          </Reveal>
+          <RevealGroup className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+            {[
+              { src: '/images/hfa-06.jpg', alt: 'Personal trainer coaching a client with a kettlebell in the gym' },
+              { src: '/images/hfa-10.jpg', alt: 'Student performing a dumbbell shoulder press during a strength training session' },
+              { src: '/images/hfa-08.jpg', alt: 'Two students high-fiving after completing a training exercise together' },
+              { src: '/images/hfa-05.jpg', alt: 'Student following an online training session with dumbbells at home' },
+            ].map((img, i) => (
+              <div
+                key={img.src}
+                className="scroll-reveal group relative overflow-hidden rounded-xl"
+                style={{ '--sr-delay': `${i * 80}ms` } as CSSProperties}
+              >
+                <div className="relative" style={{ aspectRatio: '3/4' }}>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    quality={80}
+                  />
+                </div>
               </div>
             ))}
           </RevealGroup>

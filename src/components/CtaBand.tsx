@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function CtaBand({
   eyebrow,
   title,
@@ -19,6 +21,19 @@ export default function CtaBand({
 }) {
   return (
     <section className="relative overflow-hidden bg-dusk">
+      {/* Background photo — subtle, blended with dusk overlay */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/hfa-04-foam-roller.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          quality={60}
+        />
+        <div className="absolute inset-0 bg-dusk/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dusk/60 via-dusk/80 to-dusk/95" />
+      </div>
       {/* Glitch texture at low opacity for visual bite */}
       {showGlitch && (
         <div

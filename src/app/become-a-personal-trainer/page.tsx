@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { Check, Phone, Quote, ArrowRight } from 'lucide-react';
 import Logo from '@/components/Logo';
 import Ticker from '@/components/Ticker';
@@ -101,6 +102,20 @@ export default function BecomeAPersonalTrainerPage() {
 
       {/* ── Hero with lead form ─────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-dusk">
+        {/* Hero background photo */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <Image
+            src="/images/hfa-07.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+            quality={75}
+          />
+          <div className="absolute inset-0 bg-dusk/82" />
+          <div className="absolute inset-0 bg-gradient-to-b from-dusk/50 via-dusk/75 to-dusk/95" />
+        </div>
         <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
         <div aria-hidden className="bg-ledger-lines-dusk pointer-events-none absolute inset-0" />
         <div
@@ -303,7 +318,19 @@ export default function BecomeAPersonalTrainerPage() {
       <section className="bg-bg py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
-            <blockquote className="relative mx-auto max-w-3xl rounded-2xl bg-dusk p-8 sm:p-12">
+            <blockquote className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl bg-dusk p-8 sm:p-12">
+              {/* Background photo — subtle atmosphere */}
+              <div aria-hidden className="pointer-events-none absolute inset-0">
+                <Image
+                  src="/images/hfa-08.jpg"
+                  alt=""
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  quality={50}
+                />
+                <div className="absolute inset-0 bg-dusk/88" />
+              </div>
               <Quote size={36} strokeWidth={1.25} className="mb-5 text-brand" aria-hidden />
               <p className="font-serif text-xl italic leading-relaxed text-mist sm:text-2xl">
                 &ldquo;{testimonial.quote}&rdquo;

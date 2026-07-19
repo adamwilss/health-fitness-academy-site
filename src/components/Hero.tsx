@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import SealMark from './SealMark';
 import { SITE } from '@/data/site';
@@ -48,6 +49,21 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-dusk">
+      {/* Hero background photo — coaching/teaching shot */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/hfa-02-pt-coaching.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+          quality={80}
+        />
+        {/* Dark overlay to preserve text readability and blend with dusk palette */}
+        <div className="absolute inset-0 bg-dusk/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dusk/40 via-dusk/70 to-dusk/95" />
+      </div>
       {/* Ambient grid + saffron glow — epic treatment */}
       <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
       <div

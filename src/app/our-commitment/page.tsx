@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
@@ -13,7 +14,7 @@ import type { CSSProperties } from 'react';
 export const metadata: Metadata = {
   title: 'Our Commitment',
   description:
-    "How Health Fitness Academy backs up its values in practice — female assessors, ongoing mentorship, and a genuinely safe space for women from every background.",
+    "How Health Fitness Academy backs up its values in practice - female assessors, ongoing mentorship, and a genuinely safe space for women from every background.",
 };
 
 const commitments = [
@@ -27,15 +28,15 @@ const commitments = [
   },
   {
     title: 'A genuine safe space for faith communities',
-    body: "We\u2019ve built our teaching environment with the specific barriers faith-community women face front of mind — modesty, women-only spaces, and freedom from judgement — without making that the only story: every course is open to any woman.",
+    body: "We\u2019ve built our teaching environment with the specific barriers faith-community women face front of mind - modesty, women-only spaces, and freedom from judgement - without making that the only story: every course is open to any woman.",
   },
   {
     title: 'Flexible around real life',
-    body: 'Online, blended or in-person, fast-track or self-paced — study fits around children, work and existing commitments, not the other way round.',
+    body: 'Online, blended or in-person, fast-track or self-paced - study fits around children, work and existing commitments, not the other way round.',
   },
   {
     title: 'Real accreditation, not a paper mill',
-    body: "OFQUAL regulation and CIMSPA, Active IQ and REPs accreditation aren\u2019t decoration — they\u2019re what makes your qualification recognised by employers and portable across the industry.",
+    body: "OFQUAL regulation and CIMSPA, Active IQ and REPs accreditation aren\u2019t decoration - they\u2019re what makes your qualification recognised by employers and portable across the industry.",
   },
 ];
 
@@ -45,9 +46,28 @@ export default function OurCommitmentPage() {
       <Nav />
       <PageHeader
         eyebrow="Our commitment"
-        title="Here’s what we actually promise you."
+        title="Here's what we actually promise you."
         subtitle="Not a mission statement — the specific things we do to back it up."
       />
+
+      {/* Feature image — practical training in action */}
+      <Reveal>
+        <section className="relative overflow-hidden bg-bg-secondary">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="relative -mx-5 overflow-hidden sm:-mx-8" style={{ height: 'clamp(240px, 28vw, 360px)' }}>
+              <Image
+                src="/images/hfa-09.jpg"
+                alt="Health Fitness Academy students in a practical coaching session"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                quality={80}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/30" />
+            </div>
+          </div>
+        </section>
+      </Reveal>
 
       <section className="bg-bg">
         <div className="mx-auto max-w-4xl px-5 pb-20 sm:px-8 sm:pb-28">
@@ -73,7 +93,7 @@ export default function OurCommitmentPage() {
           <Reveal>
             <SectionLabel label="Held to a standard" tone="brand" />
             <h2 className="mb-8 max-w-2xl font-heading text-[clamp(1.75rem,3.6vw,2.5rem)] font-semibold leading-[1.15] text-ink">
-              Regulated and accredited — not self-declared.
+              Regulated and accredited - not self-declared.
             </h2>
           </Reveal>
           <Reveal delay={100}>

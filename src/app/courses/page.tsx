@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
@@ -35,6 +36,21 @@ export default function CoursesIndexPage() {
       </section>
 
       <section className="border-t border-line bg-bg-secondary" id="bundles">
+        {/* Photo strip — training in progress */}
+        <Reveal>
+          <div className="relative overflow-hidden" style={{ height: 'clamp(200px, 24vw, 320px)' }}>
+            <Image
+              src="/images/hfa-05.jpg"
+              alt="Health Fitness Academy students during a practical training session"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              quality={80}
+            />
+            <div className="absolute inset-0 bg-dusk/50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/60" />
+          </div>
+        </Reveal>
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <Reveal>
             <SectionLabel label="Bundles" tone="brand" />

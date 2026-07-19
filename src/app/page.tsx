@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import { ArrowRight, Quote } from 'lucide-react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -75,6 +76,27 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Full-bleed photo strip — practical training in action */}
+      <Reveal>
+        <section className="relative overflow-hidden" style={{ height: 'clamp(280px, 36vw, 440px)' }}>
+          <Image
+            src="/images/hfa-03-group-class.jpg"
+            alt="Students taking part in a group functional training class with kettlebells and battle ropes"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-dusk/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-dusk/30 via-transparent to-dusk/60" />
+          <div className="relative mx-auto flex h-full max-w-6xl items-center px-5 sm:px-8">
+            <p className="max-w-md font-serif text-2xl italic leading-snug text-mist sm:text-3xl">
+              Real qualifications. Real training. Real confidence.
+            </p>
+          </div>
+        </section>
+      </Reveal>
 
       {/* Founder story teaser */}
       <section className="bg-bg">

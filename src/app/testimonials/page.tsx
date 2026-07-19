@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Quote, ArrowRight } from 'lucide-react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -33,7 +34,19 @@ export default function TestimonialsPage() {
               No avatar pill: name + role as magazine-style attribution are
               stronger and more specific than a monogram circle. */}
           <Reveal>
-            <blockquote className="relative rounded-2xl bg-dusk p-9 sm:p-14">
+            <blockquote className="relative overflow-hidden rounded-2xl bg-dusk p-9 sm:p-14">
+              {/* Background photo — subtle atmosphere behind the quote */}
+              <div aria-hidden className="pointer-events-none absolute inset-0">
+                <Image
+                  src="/images/hfa-06.jpg"
+                  alt=""
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  quality={50}
+                />
+                <div className="absolute inset-0 bg-dusk/88" />
+              </div>
               {/* Opening mark: large, positioned top-left like a broadsheet. */}
               <Quote
                 size={44}

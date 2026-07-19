@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -23,9 +24,28 @@ export default function AboutPage() {
       <Nav />
       <PageHeader
         eyebrow="Our story"
-        title="A space that didn’t exist, until Sakina built it."
-        subtitle="Health Fitness Academy started with one woman’s own transformation — and a refusal to let that stay a one-off."
+        title="A space that didn't exist, until Sakina built it."
+        subtitle="Health Fitness Academy started with one woman's own transformation — and a refusal to let that stay a one-off."
       />
+
+      {/* Feature image — practical training environment */}
+      <Reveal>
+        <section className="relative overflow-hidden bg-bg-secondary">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="relative -mx-5 overflow-hidden sm:-mx-8" style={{ height: 'clamp(260px, 32vw, 400px)' }}>
+              <Image
+                src="/images/hfa-01-stretch.jpg"
+                alt="Student performing a pigeon stretch on a mat in the Health Fitness Academy training studio"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                quality={80}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-transparent to-dusk/30" />
+            </div>
+          </div>
+        </section>
+      </Reveal>
 
       {/* Stats strip - real numbers from existing data */}
       <Reveal>
@@ -61,26 +81,26 @@ export default function AboutPage() {
               <p>
                 In 2012, at 34, Sakina Khan was made redundant while raising four children,
                 navigating her own mental health struggles, and living with medical obesity. It
-                wasn&rsquo;t the moment anyone would have picked to start a fitness career — which
+                wasn&rsquo;t the moment anyone would have picked to start a fitness career - which
                 is exactly why it matters that she did.
               </p>
               <p>
                 Fitness became the thing that turned her situation around, not as a quick fix, but
-                as a genuine, sustained transformation. She didn&rsquo;t stop at feeling better —
+                as a genuine, sustained transformation. She didn&rsquo;t stop at feeling better -
                 she went on to complete her own Level 2, Level 3 and Level 4 fitness
                 qualifications, became a certified instructor, and started running women-only boot
                 camps in her own community.
               </p>
               <p>
                 Those boot camps are where the idea for this Academy actually started. Session
-                after session, Sakina watched women arrive nervous — about their bodies, their
-                fitness, sometimes about simply being in a room to exercise at all — and leave
+                after session, Sakina watched women arrive nervous - about their bodies, their
+                fitness, sometimes about simply being in a room to exercise at all - and leave
                 changed, because the room was theirs. No mixed classes to navigate, no assumptions
                 to push back against, just space to build strength and confidence on their own
                 terms.
               </p>
               <p>
-                She looked for a training provider that reflected that same principle — a
+                She looked for a training provider that reflected that same principle - a
                 female-centred space where women could gain real, accredited fitness
                 qualifications, taught and assessed by women who understood exactly what that
                 first nervous class felt like. It didn&rsquo;t exist. So she built it.
@@ -145,7 +165,7 @@ export default function AboutPage() {
             <p className="text-base leading-relaxed text-muted">
               You&rsquo;re not handed a syllabus and left to work through it alone. Every course is
               built and assessed by women who&rsquo;ve done this job, and mentorship doesn&rsquo;t
-              stop the day you pass — many of our own team qualified through this exact Academy
+              stop the day you pass - many of our own team qualified through this exact Academy
               and now teach the next cohort.
             </p>
           </Reveal>
@@ -156,7 +176,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-base leading-relaxed text-muted">
               We give particular thought to the barriers women from faith communities have faced
-              entering fitness — from modesty considerations to a scarcity of women-only spaces.
+              entering fitness - from modesty considerations to a scarcity of women-only spaces.
               That focus shapes how we teach, but every course and every bundle is open to any
               woman ready to learn.
             </p>

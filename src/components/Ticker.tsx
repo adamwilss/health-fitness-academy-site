@@ -1,6 +1,6 @@
 /**
  * Credential ticker — the ledger in motion. A slow conveyor of the
- * Academy's real credentials on dusk, used as a live seam between
+ * Academy's real credentials on charcoal, used as a live seam between
  * sections. Pauses entirely under prefers-reduced-motion.
  */
 const DEFAULT_ITEMS = [

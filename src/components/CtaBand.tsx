@@ -23,14 +23,14 @@ export default function CtaBand({
       {showGlitch && (
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.04]"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.03]"
           style={{ backgroundImage: 'url(/hfa-logo-glitch.jpg)' }}
         />
       )}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-32 -bottom-32 h-[420px] w-[420px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgb(var(--brand) / 0.14) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgb(var(--brand) / 0.12) 0%, transparent 70%)' }}
       />
       <div className="relative mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 sm:py-28">
         <p className="mb-4 font-mono text-[0.7rem] font-medium uppercase tracking-[0.24em] text-brand">

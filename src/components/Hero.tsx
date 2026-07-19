@@ -10,8 +10,7 @@ const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 /**
  * Homepage hero — split layout: text left, coaching photo right.
- * The photo is foreground imagery, not a buried background texture.
- * Under prefers-reduced-motion, everything renders in its final state.
+ * Charcoal dark background, vibrant orange gradient CTAs, foreground photography.
  */
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -21,7 +20,7 @@ export default function Hero() {
     'Built for women',
     <span key="lead" className="relative inline-block">
       ready to{' '}
-      <span className="relative inline-block text-brand">
+      <span className="relative inline-block orange-gradient-text">
         lead.
         <motion.svg
           viewBox="0 0 120 10"
@@ -46,28 +45,17 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-dusk">
-      {/* Ambient grid + saffron glow */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
+      {/* Ambient grid + orange glow */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-30" />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-32 -top-24 h-[520px] w-[520px] rounded-full animate-slow-pulse"
         style={{
           background:
-            'radial-gradient(circle, rgb(var(--brand) / 0.16) 0%, transparent 62%)',
+            'radial-gradient(circle, rgb(var(--brand) / 0.14) 0%, transparent 62%)',
         }}
       />
-      {/* Layered texture: ruled ledger feint + warm saffron / moss glows. */}
       <div aria-hidden className="bg-ledger-lines-dusk pointer-events-none absolute inset-0" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgb(var(--moss) / 0.14) 0%, transparent 70%)' }}
-      />
-      {/* Ghost seal watermark */}
-      <SealMark
-        id="hero"
-        className="pointer-events-none absolute -bottom-24 -right-20 hidden h-[460px] w-[460px] text-mist opacity-[0.05] lg:block"
-      />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-10 px-5 pb-16 pt-32 sm:px-8 sm:pb-24 sm:pt-40 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-14">
         {/* Text column */}
@@ -142,16 +130,15 @@ export default function Hero() {
               priority
               quality={85}
             />
-            {/* Subtle vignette edge — just enough to blend with dusk, not hide the photo */}
-            <div className="absolute inset-0 bg-gradient-to-t from-dusk/30 via-transparent to-transparent" />
+            {/* Subtle edge gradient — photo stays vivid */}
+            <div className="absolute inset-0 bg-gradient-to-t from-dusk/25 via-transparent to-transparent" />
           </div>
-          {/* Caption bar beneath the photo */}
           <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-muted-dusk">
             Prestwich, Manchester &amp; online across the UK
           </p>
         </motion.div>
 
-        {/* Mobile: show the photo as a smaller inline image below text */}
+        {/* Mobile: show the photo below text */}
         <motion.div
           initial={reduceMotion ? undefined : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -168,7 +155,7 @@ export default function Hero() {
               priority
               quality={85}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-dusk/25 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-dusk/20 via-transparent to-transparent" />
           </div>
           <p className="mt-3 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-muted-dusk">
             Prestwich, Manchester &amp; online across the UK

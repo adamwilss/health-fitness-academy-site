@@ -61,7 +61,7 @@ export default function Nav() {
     <header
       className={`sticky top-0 z-50 w-full border-b transition-colors duration-300 ${
         scrolled
-          ? 'border-line bg-bg/90 shadow-[0_1px_20px_-8px_rgba(36,27,27,0.18)] backdrop-blur-md'
+          ? 'border-line bg-bg/92 shadow-[0_1px_16px_-6px_rgba(45,50,58,0.12)] backdrop-blur-md'
           : 'border-transparent bg-bg/0'
       }`}
     >
@@ -79,7 +79,7 @@ export default function Nav() {
                 href={link.href}
                 aria-current={active ? 'page' : undefined}
                 className={`nav-link whitespace-nowrap text-sm transition-colors ${
-                  active ? 'text-ink' : 'text-muted hover:text-ink'
+                  active ? 'text-ink font-semibold' : 'text-muted hover:text-ink'
                 }`}
               >
                 {link.label}
@@ -105,7 +105,7 @@ export default function Nav() {
       </div>
 
       {menuOpen && (
-        <div className="menu-in max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-bg px-5 pb-8 pt-5 shadow-[0_24px_40px_-24px_rgba(36,27,27,0.35)] sm:px-8 lg:hidden">
+        <div className="menu-in max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-line bg-bg px-5 pb-8 pt-5 shadow-[0_24px_40px_-24px_rgba(45,50,58,0.3)] sm:px-8 lg:hidden">
           <nav className="flex flex-col">
             {[...LINKS, { label: 'Contact', href: '/contact' }].map((link, i) => {
               const active = 'match' in link ? isActive(pathname, link) : pathname === link.href;

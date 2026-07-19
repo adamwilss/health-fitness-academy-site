@@ -4,30 +4,29 @@
 
 /*
  * Theme tokens — Health Fitness Academy.
- * Numeric triplets (e.g. "242 234 217") feed the Tailwind rgb(var(...) / <alpha-value>)
- * colours in tailwind.config.ts. This is a distinct brand from Coltura's own
- * site (no red/black/Fraunces here) — warm parchment, deep plum-aubergine
- * dusk sections, burnt-marigold saffron as the single accent, and a quiet
- * moss green kept in reserve for accreditation ticks.
+ * Brand-aligned: charcoal dark, warm off-white light, vibrant orange accent.
+ * The orange gradient (#EA593A → #FB9F2D) is the signature accent system.
  */
 :root {
-  --bg: 242 234 217; /* #F2EAD9 parchment */
-  --bg-secondary: 234 222 194; /* #EADEC2 deeper putty */
-  --card: 250 245 233; /* #FAF5E9 warm card surface */
-  --footer: 46 32 54; /* #2E2036 dusk — footer bookends the hero */
-  --ink: 36 27 27; /* #241B1B */
-  --muted: 111 97 84; /* #6F6154 warm taupe */
-  --line: 221 206 174; /* #DDCEAE hairline on parchment */
-  --brand: 217 138 42; /* #D98A2A burnt marigold saffron */
-  --on-brand: 36 27 27; /* ink — dark text reads as a pressed seal on gold */
-  --dusk: 46 32 54; /* #2E2036 deep plum-aubergine */
-  --moss: 91 107 68; /* #5B6B44 muted olive, used sparingly */
-  --mist: 242 234 217; /* parchment-toned text used on dusk backgrounds */
-  --muted-dusk: 189 178 191; /* soft lavender-grey muted text on dusk */
+  --bg: 250 250 247; /* #FAFAF7 warm off-white */
+  --bg-secondary: 240 239 235; /* #F0EFEB warm cream */
+  --card: 255 255 252; /* #FFFCFA card surface */
+  --footer: 45 50 58; /* #2D323A charcoal */
+  --ink: 45 50 58; /* #2D323A charcoal */
+  --muted: 110 115 125; /* #6E737D warm grey */
+  --line: 220 218 212; /* #DCDAD4 warm hairline */
+  --brand: 234 89 58; /* #EA593A orange */
+  --brand-secondary: 251 159 45; /* #FB9F2D amber */
+  --on-brand: 255 255 252; /* white text on orange */
+  --dusk: 45 50 58; /* #2D323A charcoal (replaces purple-brown) */
+  --moss: 91 107 68; /* #5B6B44 muted olive — reserved */
+  --mist: 250 250 247; /* #FAFAF7 light text on dark backgrounds */
+  --muted-dusk: 180 185 195; /* #B4B9C3 muted text on charcoal */
 
-  --ink-hex: #241b1b;
-  --brand-hex: #d98a2a;
-  --dusk-hex: #2e2036;
+  --ink-hex: #2D323A;
+  --brand-hex: #EA593A;
+  --brand-secondary-hex: #FB9F2D;
+  --dusk-hex: #2D323A;
 }
 
 html {
@@ -48,13 +47,13 @@ body::before {
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
-  background: rgb(var(--brand) / 0.28);
+  background: rgb(var(--brand) / 0.22);
   color: rgb(var(--ink));
 }
 
@@ -105,12 +104,8 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── The Ledger ───────────────────────────────────────────────────────────
- * The signature motif: course/bundle pages carry a running vertical rule
- * like a training-log attendance ledger. Each entry is a mono "stamped"
- * line; each accrediting body gets a small saffron wax-seal badge, tying
- * the founder's discipline-and-transformation story to the literal
- * credentialing structure of the business.
+ * The Ledger — course/bundle pages carry a running vertical rule
+ * like a training-log attendance ledger.
  */
 .ledger-rule {
   background-image: repeating-linear-gradient(
@@ -125,8 +120,8 @@ html.js .reveal-group.is-visible .scroll-reveal {
 
 .ledger-seal {
   box-shadow:
-    0 1px 0 rgb(var(--ink) / 0.08),
-    0 6px 14px -8px rgb(var(--ink) / 0.35);
+    0 1px 0 rgb(var(--ink) / 0.06),
+    0 4px 12px -6px rgb(var(--ink) / 0.25);
 }
 
 @keyframes stamp-settle {
@@ -161,13 +156,10 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── Button system ────────────────────────────────────────────────────────
- * One shared vocabulary for every CTA on the site: primary saffron,
- * ghost-on-dusk, ghost-on-parchment. Hover lifts + shadow bloom instead of
- * bare scale, so buttons feel pressed from the same die everywhere.
+ * Button system — orange gradient CTAs, ghost variants on charcoal and light.
  */
 .btn {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-bold tracking-[0.01em];
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-bold tracking-[0.01em];
   transition:
     transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -185,22 +177,23 @@ html.js .reveal-group.is-visible .scroll-reveal {
   @apply min-h-10 px-5;
 }
 .btn-primary {
-  @apply bg-brand text-on-brand;
+  @apply text-white;
+  background: linear-gradient(135deg, rgb(var(--brand)) 0%, rgb(var(--brand-secondary)) 100%);
   box-shadow:
-    0 1px 0 rgb(var(--ink) / 0.08),
-    0 12px 24px -14px rgb(var(--brand) / 0.65);
+    0 1px 0 rgb(var(--brand) / 0.3),
+    0 12px 24px -14px rgb(var(--brand) / 0.55);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 1px 0 rgb(var(--ink) / 0.08),
-    0 18px 32px -14px rgb(var(--brand) / 0.75);
+    0 1px 0 rgb(var(--brand) / 0.3),
+    0 18px 32px -14px rgb(var(--brand) / 0.7);
 }
 .btn-primary:active {
   transform: translateY(0) scale(0.99);
   box-shadow:
-    0 1px 0 rgb(var(--ink) / 0.08),
-    0 8px 16px -12px rgb(var(--brand) / 0.6);
+    0 1px 0 rgb(var(--brand) / 0.2),
+    0 8px 16px -12px rgb(var(--brand) / 0.5);
 }
 .btn-ghost-dusk {
   @apply border font-semibold text-mist;
@@ -219,8 +212,8 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 .btn-ghost-ink:hover {
   transform: translateY(-2px);
-  border-color: rgb(var(--ink) / 0.3);
-  background-color: rgb(var(--card));
+  border-color: rgb(var(--brand) / 0.5);
+  background-color: rgb(var(--brand) / 0.04);
 }
 .btn-ghost-ink:active {
   transform: translateY(0);
@@ -235,12 +228,10 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── Card lift ────────────────────────────────────────────────────────────
- * Shared hover treatment for every interactive card: a gentle rise with a
- * warm ink shadow, on the same spring-like curve as the scroll reveals.
+ * Card lift — shared hover treatment for every interactive card.
  */
 .card-lift {
-  box-shadow: 0 1px 0 rgb(var(--ink) / 0.03), 0 10px 22px -18px rgb(var(--ink) / 0.18);
+  box-shadow: 0 1px 0 rgb(var(--ink) / 0.03), 0 8px 20px -16px rgb(var(--ink) / 0.15);
   transition:
     transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 450ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -250,7 +241,7 @@ html.js .reveal-group.is-visible .scroll-reveal {
   transform: translateY(-4px);
   box-shadow:
     0 2px 0 rgb(var(--ink) / 0.03),
-    0 26px 44px -26px rgb(var(--ink) / 0.3);
+    0 22px 40px -22px rgb(var(--ink) / 0.25);
 }
 @media (prefers-reduced-motion: reduce) {
   .card-lift,
@@ -261,15 +252,13 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── Ruled-paper texture ──────────────────────────────────────────────────
- * Faint horizontal rules, like the feint on a ledger page — used to give
- * photography-free sections quiet visual weight instead of flat colour.
+ * Ruled-paper texture — faint horizontal rules on light sections.
  */
 .bg-ledger-lines {
   background-image: repeating-linear-gradient(
     to bottom,
-    rgb(var(--ink) / 0.045) 0,
-    rgb(var(--ink) / 0.045) 1px,
+    rgb(var(--ink) / 0.035) 0,
+    rgb(var(--ink) / 0.035) 1px,
     transparent 1px,
     transparent 32px
   );
@@ -284,8 +273,7 @@ html.js .reveal-group.is-visible .scroll-reveal {
   );
 }
 
-/* Nav links: saffron hairline slides in from the left; stays put on the
-   current page. */
+/* Nav links: orange hairline slides in from the left; stays put on current page. */
 .nav-link {
   position: relative;
 }
@@ -294,9 +282,9 @@ html.js .reveal-group.is-visible .scroll-reveal {
   position: absolute;
   left: 0;
   bottom: -5px;
-  height: 1.5px;
+  height: 2px;
   width: 100%;
-  background: rgb(var(--brand));
+  background: linear-gradient(90deg, rgb(var(--brand)) 0%, rgb(var(--brand-secondary)) 100%);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -385,25 +373,23 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── Form fields ──────────────────────────────────────────────────────────
- * One field treatment across the contact form: hover hint, saffron focus
- * ring that blooms rather than snaps.
+ * Form fields — one field treatment across the contact form.
  */
 .field {
-  @apply w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink outline-none;
+  @apply w-full rounded-xl border border-line bg-bg px-4 py-3 text-sm text-ink outline-none;
   transition:
     border-color 250ms ease,
     box-shadow 250ms ease;
 }
 .field:hover:not(:focus) {
-  border-color: rgb(var(--ink) / 0.28);
+  border-color: rgb(var(--ink) / 0.25);
 }
 .field:focus {
   border-color: rgb(var(--brand));
-  box-shadow: 0 0 0 3px rgb(var(--brand) / 0.16);
+  box-shadow: 0 0 0 3px rgb(var(--brand) / 0.14);
 }
 
-/* Editorial drop cap for long-form openings (founder story, blog lede). */
+/* Editorial drop cap for long-form openings. */
 .drop-cap > p:first-of-type::first-letter {
   float: left;
   padding-right: 0.14em;
@@ -414,8 +400,7 @@ html.js .reveal-group.is-visible .scroll-reveal {
   color: rgb(var(--brand));
 }
 
-/* Wax seals sit slightly off true; on hover they straighten, like being
-   pressed square. */
+/* Wax seals sit slightly off true; on hover they straighten. */
 .seal-badge {
   transform: rotate(var(--seal-rotate, -3deg));
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -432,9 +417,7 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── Credential ticker ────────────────────────────────────────────────────
- * A slow conveyor of real credentials on dusk — the ledger in motion.
- * Two identical halves; the track slides one half-width and loops.
+ * Credential ticker — a slow conveyor of real credentials on charcoal.
  */
 .ticker-track {
   display: flex;
@@ -453,9 +436,7 @@ html.js .reveal-group.is-visible .scroll-reveal {
 }
 
 /*
- * ── Walkthrough spotlight ────────────────────────────────────────────────
- * The demo tour's pointing finger: a saffron ring pressed around the
- * element being talked about, pulsing like a seal being stamped.
+ * Walkthrough spotlight — orange ring for demo tour.
  */
 .tour-ring {
   position: absolute;
@@ -487,7 +468,7 @@ html.js .reveal-group.is-visible .scroll-reveal {
   }
 }
 
-/* ── Hero epic accents ──────────────────────────────────────────────── */
+/* Hero epic accents */
 .text-gradient-brand {
   background-image: linear-gradient(
     135deg,
@@ -522,4 +503,16 @@ html.js .reveal-group.is-visible .scroll-reveal {
   .animate-slow-pulse {
     animation: none;
   }
+}
+
+/* Orange gradient accents for dividers and highlights */
+.orange-gradient {
+  background: linear-gradient(135deg, rgb(var(--brand)) 0%, rgb(var(--brand-secondary)) 100%);
+}
+
+.orange-gradient-text {
+  background: linear-gradient(135deg, rgb(var(--brand)) 0%, rgb(var(--brand-secondary)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

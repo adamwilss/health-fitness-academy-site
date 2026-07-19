@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ArrowLeft, ArrowRight, X, Check } from 'lucide-react';
 
 const KEY = 'hfa-walkthrough';
@@ -95,15 +95,26 @@ const STEPS: Step[] = [
 
 export default function WalkthroughGuide() {
   const router = useRouter();
+  const pathname = usePathname();
   const [step, setStep] = useState<number | null>(null);
 
+  // Re-check on every route change (the guide mounts once in the layout,
+  // before the start button has armed localStorage) and on the explicit
+  // start event, so the card appears the moment the tour begins.
   useEffect(() => {
-    const raw = localStorage.getItem(KEY);
-    if (raw !== null) {
+    function sync() {
+      const raw = localStorage.getItem(KEY);
+      if (raw === null) {
+        setStep(null);
+        return;
+      }
       const n = parseInt(raw, 10);
       if (!Number.isNaN(n) && n >= 0 && n < STEPS.length) setStep(n);
     }
-  }, []);
+    sync();
+    window.addEventListener(KEY, sync);
+    return () => window.removeEventListener(KEY, sync);
+  }, [pathname]);
 
   const exit = useCallback(() => {
     localStorage.removeItem(KEY);
@@ -221,6 +232,7 @@ export function StartWalkthroughButton() {
       type="button"
       onClick={() => {
         localStorage.setItem(KEY, '0');
+        window.dispatchEvent(new Event(KEY));
         router.push(STEPS[0].href);
       }}
       className="btn btn-primary btn-lg w-full sm:w-auto"

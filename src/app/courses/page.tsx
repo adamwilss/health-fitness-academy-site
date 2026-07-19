@@ -26,7 +26,6 @@ export default function CoursesIndexPage() {
         eyebrow="Courses & bundles"
         title="Ten courses, two bundles, one continuous pathway."
         subtitle="Filter by level to find your starting point — every course leads somewhere real."
-        epic
       />
 
       <section className="bg-bg">

@@ -45,9 +45,8 @@ export default function OurCommitmentPage() {
       <Nav />
       <PageHeader
         eyebrow="Our commitment"
-        title="Here's what we actually promise you."
+        title="Here’s what we actually promise you."
         subtitle="Not a mission statement — the specific things we do to back it up."
-        epic
       />
 
       <section className="bg-bg">

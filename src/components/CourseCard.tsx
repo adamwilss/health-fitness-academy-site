@@ -6,7 +6,7 @@ export default function CourseCard({ course }: { course: Course }) {
   return (
     <a
       href={`/courses/${course.slug}`}
-      className="group flex flex-col rounded-2xl border border-line bg-card p-6 transition-colors hover:border-brand/50 sm:p-7"
+      className="group card-lift flex flex-col rounded-2xl border border-line bg-card p-6 hover:border-brand/50 sm:p-7"
     >
       <div className="mb-4 flex items-center justify-between">
         <LevelBadge level={course.level} label={course.levelLabel} size="sm" />

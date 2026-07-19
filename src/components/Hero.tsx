@@ -106,7 +106,7 @@ export default function Hero() {
             initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.75, ease: EASE_OUT }}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-muted-dusk"
+            className="mt-7 max-w-xl text-base leading-relaxed text-muted-dusk sm:text-lg"
           >
             Health Fitness Academy trains women in Prestwich and online across the UK to become
             gym instructors, personal trainers, and Pilates and cycling instructors — accredited

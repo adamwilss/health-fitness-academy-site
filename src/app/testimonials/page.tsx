@@ -24,34 +24,34 @@ export default function TestimonialsPage() {
       <PageHeader
         eyebrow="Student stories"
         title="What our students say"
-        subtitle="Real words from women who trained with us — the standard every course still has to meet."
+        subtitle="Real words from students who trained with us — the standard every course still has to meet."
       />
 
       <section className="bg-bg">
         <div className="mx-auto max-w-3xl px-5 pb-20 sm:px-8 sm:pb-28">
-          {/* Hero testimonial — Samantha S. featured prominently */}
+          {/* Hero testimonial — editorial pull-quote treatment.
+              No avatar pill: name + role as magazine-style attribution are
+              stronger and more specific than a monogram circle. */}
           <Reveal>
-            <div className="mb-10 flex flex-col items-center text-center">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10 font-serif text-2xl font-bold text-brand">
-                {testimonial.name.charAt(0)}
-              </div>
-              <p className="font-mono text-sm font-semibold tracking-[0.04em] text-ink">
-                {testimonial.name}
+            <blockquote className="relative rounded-2xl bg-dusk p-9 sm:p-14">
+              {/* Opening mark: large, positioned top-left like a broadsheet. */}
+              <Quote
+                size={44}
+                strokeWidth={1}
+                className="mb-6 text-brand opacity-80"
+                aria-hidden
+              />
+              <p className="font-serif text-2xl italic leading-[1.45] text-mist sm:text-3xl sm:leading-[1.4]">
+                {testimonial.quote}
               </p>
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                {testimonial.role}
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={60}>
-            <blockquote className="relative rounded-2xl bg-dusk p-8 sm:p-12">
-              <Quote size={32} strokeWidth={1.5} className="mb-5 text-brand" aria-hidden />
-              <p className="font-serif text-2xl italic leading-relaxed text-mist sm:text-3xl">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-              <footer className="mt-7">
-                <StarRating size={16} className="text-brand" />
+              <footer className="mt-8 flex flex-col gap-1.5 border-t border-mist/10 pt-6">
+                <StarRating size={14} className="mb-1 text-brand" />
+                <p className="font-mono text-sm font-semibold tracking-[0.03em] text-mist">
+                  {testimonial.name}
+                </p>
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-dusk">
+                  {testimonial.role}
+                </p>
               </footer>
             </blockquote>
           </Reveal>

@@ -37,7 +37,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         eyebrow={`${post.displayDate} · ${post.readingTime}`}
         title={post.title}
         subtitle={post.excerpt}
-        epic
       />
 
       <section className="bg-bg">

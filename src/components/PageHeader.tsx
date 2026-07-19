@@ -1,10 +1,9 @@
 import SectionLabel from './SectionLabel';
 
-// Shared header for interior pages. Every call site gives its own eyebrow
-// and subtitle — the live site's mistake of copy-pasting the same subtitle
-// on every page is deliberately not repeated here.
-// When `epic` is true, the header gets the hero-grid + gradient title
-// treatment from the bundle pages.
+// Shared header for interior pages.
+// epic=true: full grid + animated glow + gradient title (home / bundle pages only).
+// Quiet mode: clean parchment background, confident type, single saffron rule via
+// SectionLabel. No gradient, no grid, no glow — Coppard-benchmark restraint.
 export default function PageHeader({
   eyebrow,
   title,
@@ -18,7 +17,7 @@ export default function PageHeader({
 }) {
   return (
     <section className="relative overflow-hidden bg-bg">
-      {/* Ambient grid + glow for epic headers */}
+      {/* Ambient grid + glow — ONLY on epic headers (home / bundle pages). */}
       {epic && (
         <>
           <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
@@ -32,22 +31,28 @@ export default function PageHeader({
           />
         </>
       )}
+      {/* Vertical rhythm: epic gets more top-breathing-room (nav + emphasis);
+          quiet interior pages sit tighter — headline lands at attention, not
+          horizon. pb tightened so section below steps up sooner. */}
       <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgb(var(--brand) / 0.09) 0%, transparent 68%)' }}
-      />
-      <div className="relative mx-auto max-w-6xl px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-36">
+        className={`relative mx-auto max-w-6xl px-5 sm:px-8 ${
+          epic
+            ? 'pb-12 pt-28 sm:pb-16 sm:pt-36'
+            : 'pb-10 pt-24 sm:pb-14 sm:pt-32'
+        }`}
+      >
         <SectionLabel label={eyebrow} tone="brand" />
         <h1
-          className={`max-w-3xl text-balance font-heading text-[clamp(2.1rem,5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.015em] ${
+          className={`max-w-3xl text-balance font-heading text-[clamp(1.875rem,4.5vw,2.875rem)] font-semibold leading-[1.1] tracking-[-0.015em] ${
             epic ? 'text-gradient-brand' : 'text-ink'
           }`}
         >
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{subtitle}</p>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            {subtitle}
+          </p>
         )}
       </div>
     </section>

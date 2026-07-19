@@ -20,8 +20,7 @@ export default function FaqPage() {
       <PageHeader
         eyebrow="FAQ"
         title="Questions worth answering honestly."
-        subtitle="If yours isn't here, ask us directly — we'd rather talk it through than leave you guessing."
-        epic
+        subtitle="If yours isn’t here, ask us directly — we’d rather talk it through than leave you guessing."
       />
 
       <section className="bg-bg">

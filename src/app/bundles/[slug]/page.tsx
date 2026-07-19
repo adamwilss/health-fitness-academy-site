@@ -162,7 +162,8 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
 
       {/* ── Stats Ribbon ─────────────────────────────────────────────── */}
       <Reveal>
-        <section className="bg-bg-secondary">
+        {/* border-t grounds the ribbon against the hero section above */}
+        <section className="border-t border-line bg-bg-secondary">
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-5">
             {[
               { value: String(bundle.hours), label: 'Study Hours' },
@@ -171,11 +172,11 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
               { value: bundle.priceOnline, label: 'Online From' },
               { value: bundle.priceHybrid, label: 'Hybrid From' },
             ].map((stat) => (
-              <div key={stat.label} className="bg-card px-6 py-7 text-center">
-                <p className="font-heading text-2xl font-bold text-brand sm:text-3xl">
+              <div key={stat.label} className="bg-card px-6 py-8 text-center">
+                <p className="font-heading text-2xl font-semibold text-brand sm:text-[1.75rem]">
                   {stat.value}
                 </p>
-                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
                   {stat.label}
                 </p>
               </div>
@@ -427,7 +428,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
         eyebrow="Stop scrolling, start qualifying"
         title="Your PT career won't build itself."
         subtitle="Book a free call. We'll map the bundle, format and timeline that fit your life — no pressure, no hard sell, just a clear next step."
-        primaryLabel="Enquire Now →"
+        primaryLabel="Enquire Now"
         primaryHref="/contact"
         secondaryLabel="Book a Free Call"
         secondaryHref="/contact"

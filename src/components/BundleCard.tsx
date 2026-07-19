@@ -5,7 +5,7 @@ export default function BundleCard({ bundle }: { bundle: Bundle }) {
   return (
     <a
       href={`/bundles/${bundle.slug}`}
-      className="group flex flex-col rounded-2xl border-2 border-brand/30 bg-card p-7 transition-colors hover:border-brand sm:p-8"
+      className="group card-lift flex flex-col rounded-2xl border-2 border-brand/30 bg-card p-7 hover:border-brand sm:p-8"
     >
       <p className="mb-2 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-brand">
         Bundle

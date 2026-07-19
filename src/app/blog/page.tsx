@@ -19,8 +19,7 @@ export default function BlogIndexPage() {
       <PageHeader
         eyebrow="Blog"
         title="Stories from the Academy"
-        subtitle="We publish when we have something worth saying, not on a schedule — here's everything so far."
-        epic
+        subtitle="We publish when we have something worth saying, not on a schedule — here’s everything so far."
       />
 
       <section className="bg-bg">
@@ -30,7 +29,7 @@ export default function BlogIndexPage() {
               <Reveal key={post.slug} delay={i * 100}>
                 <a
                   href={`/blog/${post.slug}`}
-                  className="group block rounded-2xl border border-line bg-card p-7 transition-all duration-300 hover:border-brand/50 hover:shadow-[0_2px_0_rgb(var(--ink)/0.03),0_26px_44px_-26px_rgb(var(--ink)/0.3)] sm:p-9"
+                  className="group card-lift block rounded-2xl border border-line bg-card p-7 hover:border-brand/50 sm:p-9"
                 >
                   <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-muted">
                     {post.displayDate} &middot; {post.readingTime}

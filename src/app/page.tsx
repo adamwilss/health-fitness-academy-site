@@ -11,7 +11,6 @@ import LevelBadge from '@/components/LevelBadge';
 import BundleCard from '@/components/BundleCard';
 import CtaBand from '@/components/CtaBand';
 import SealBadge from '@/components/SealBadge';
-import StarRating from '@/components/StarRating';
 import { courses } from '@/data/courses';
 import { bundles } from '@/data/bundles';
 import { testimonials } from '@/data/testimonials';
@@ -54,14 +53,11 @@ export default function HomePage() {
 
       {/* Trust bar */}
       <section className="border-b border-line bg-bg-secondary">
-        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:justify-between">
-            <div className="flex flex-wrap items-center gap-3">
-              <StarRating size={14} className="text-brand" />
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
-                Regulated &amp; accredited by
-              </p>
-            </div>
+        <div className="mx-auto max-w-6xl px-5 py-7 sm:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:justify-between">
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
+              Regulated &amp; accredited by
+            </p>
             <div className="flex flex-wrap items-center gap-3">
               {SITE.accreditations.map((body, i) => (
                 <SealBadge key={body} label={body} index={i} />
@@ -160,7 +156,7 @@ export default function HomePage() {
                 key={course.slug}
                 href={`/courses/${course.slug}`}
                 style={{ '--sr-delay': `${i * 90}ms` } as CSSProperties}
-                className="scroll-reveal group flex flex-col rounded-2xl border border-line bg-card p-7 transition-colors hover:border-brand/50"
+                className="scroll-reveal group card-lift flex flex-col rounded-2xl border border-line bg-card p-7 hover:border-brand/50"
               >
                 <div className="mb-4">
                   <LevelBadge level={course.level} label={course.levelLabel} size="sm" />
@@ -250,7 +246,7 @@ export default function HomePage() {
             <SectionLabel label="From the academy" />
             <a
               href={`/blog/${post.slug}`}
-              className="group grid grid-cols-1 gap-8 rounded-2xl border border-line bg-card p-8 transition-colors hover:border-brand/40 sm:p-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-center"
+              className="group card-lift grid grid-cols-1 gap-8 rounded-2xl border border-line bg-card p-8 hover:border-brand/40 sm:p-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-center"
             >
               <div>
                 <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-muted">

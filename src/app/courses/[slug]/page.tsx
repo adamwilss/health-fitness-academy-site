@@ -58,7 +58,6 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
         eyebrow={course.cpd ? 'CPD add-on' : `${course.levelLabel} qualification`}
         title={course.title}
         subtitle={course.tagline}
-        epic
       />
 
       {/* Trust line — consistent with bundle pages */}
@@ -111,7 +110,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
             {bundle && (
               <Reveal delay={200} className="mt-10">
-                <div className="rounded-2xl border-2 border-brand/30 bg-card p-6 sm:p-7">
+                <div className="rounded-2xl border border-brand/20 bg-brand/5 p-6 sm:p-7">
                   <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-brand">
                     Better value as a bundle
                   </p>
@@ -136,7 +135,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
               <Ledger title="Course record" entries={entries} accreditations={course.accreditations} />
               <a
                 href="/contact"
-                className="mt-5 inline-flex min-h-14 w-full items-center justify-center rounded-lg bg-brand px-8 text-sm font-bold tracking-[0.01em] text-on-brand transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                className="btn btn-primary btn-lg mt-5 w-full"
               >
                 Enquire About This Course
               </a>

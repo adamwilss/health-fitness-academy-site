@@ -43,17 +43,11 @@ export default function CtaBand({
           {subtitle}
         </p>
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href={primaryHref}
-            className="inline-flex min-h-14 w-full items-center justify-center rounded-lg bg-brand px-8 text-sm font-bold tracking-[0.01em] text-on-brand transition-transform hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
-          >
+          <a href={primaryHref} className="btn btn-primary btn-lg w-full sm:w-auto">
             {primaryLabel}
           </a>
           {secondaryLabel && secondaryHref && (
-            <a
-              href={secondaryHref}
-              className="inline-flex min-h-14 w-full items-center justify-center rounded-lg border border-mist/25 px-8 text-sm font-semibold text-mist transition-colors hover:border-mist/50 sm:w-auto"
-            >
+            <a href={secondaryHref} className="btn btn-ghost-dusk btn-lg w-full sm:w-auto">
               {secondaryLabel}
             </a>
           )}

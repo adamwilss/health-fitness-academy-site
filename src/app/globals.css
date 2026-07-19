@@ -429,3 +429,40 @@ html.js .reveal-group.is-visible .scroll-reveal {
     transition: none;
   }
 }
+
+/* ── Hero epic accents ──────────────────────────────────────────────── */
+.text-gradient-brand {
+  background-image: linear-gradient(
+    135deg,
+    rgb(var(--ink)) 0%,
+    rgb(var(--ink)) 55%,
+    rgb(var(--brand)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(var(--ink) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--ink) / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 60% 20%, black 0%, transparent 65%);
+  -webkit-mask-image: radial-gradient(circle at 60% 20%, black 0%, transparent 65%);
+}
+
+@keyframes slow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.85; }
+}
+
+.animate-slow-pulse {
+  animation: slow-pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slow-pulse {
+    animation: none;
+  }
+}

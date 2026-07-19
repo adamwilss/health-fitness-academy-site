@@ -10,6 +10,7 @@ import SectionLabel from '@/components/SectionLabel';
 import Accordion from '@/components/Accordion';
 import CourseCard from '@/components/CourseCard';
 import StarRating from '@/components/StarRating';
+import SealBadge from '@/components/SealBadge';
 import { bundles, getBundle } from '@/data/bundles';
 import { getCourse } from '@/data/courses';
 import { SITE } from '@/data/site';
@@ -73,12 +74,22 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
 
       {/* ── BundleHero ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-bg">
+        {/* ambient grid + glow */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full"
+          className="pointer-events-none absolute -right-32 -top-24 h-[520px] w-[520px] rounded-full animate-slow-pulse"
           style={{
             background:
-              'radial-gradient(circle, rgb(var(--brand) / 0.09) 0%, transparent 68%)',
+              'radial-gradient(circle, rgb(var(--brand) / 0.14) 0%, transparent 62%)',
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full opacity-60"
+          style={{
+            background:
+              'radial-gradient(circle, rgb(var(--moss) / 0.09) 0%, transparent 65%)',
           }}
         />
         <div className="relative mx-auto max-w-6xl px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
@@ -92,7 +103,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
           </Reveal>
 
           <Reveal delay={60}>
-            <h1 className="max-w-3xl text-balance font-heading text-[clamp(2.1rem,5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-ink">
+            <h1 className="max-w-3xl text-balance font-heading text-[clamp(2.1rem,5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-gradient-brand">
               {bundle.title}
             </h1>
           </Reveal>
@@ -131,6 +142,20 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
             <a href="/contact" className="btn btn-ghost-ink btn-lg">
               Book a Free Call
             </a>
+          </Reveal>
+
+          {/* Trust bar */}
+          <Reveal delay={300} className="mt-10 flex flex-wrap items-center gap-6 border-t border-line pt-8 sm:gap-10">
+            <div className="flex items-center gap-3">
+              <StarRating size={14} className="text-brand" />
+              <span className="text-sm font-medium text-muted">Rated by students</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <SealBadge label="OFQUAL" index={0} />
+              <SealBadge label="CIMSPA" index={1} />
+              <SealBadge label="Active" index={2} />
+              <SealBadge label="REPs" index={3} />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -399,9 +424,9 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
 
       {/* ── Final CTA ───────────────────────────────────────────────── */}
       <CtaBand
-        eyebrow="Ready to start?"
-        title="Your new career begins with one conversation."
-        subtitle="A short, no-pressure call to confirm the bundle, format and timeline that fit your life. We'll answer every question — then it's entirely your call."
+        eyebrow="Stop scrolling, start qualifying"
+        title="Your PT career won't build itself."
+        subtitle="Book a free call. We'll map the bundle, format and timeline that fit your life — no pressure, no hard sell, just a clear next step."
         primaryLabel="Enquire Now →"
         primaryHref="/contact"
         secondaryLabel="Book a Free Call"

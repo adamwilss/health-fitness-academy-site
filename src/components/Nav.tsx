@@ -10,6 +10,7 @@ import { SITE } from '@/data/site';
 const LINKS: { label: string; href: string; match?: string[] }[] = [
   { label: 'Courses', href: '/courses' },
   { label: 'Bundles', href: '/courses#bundles', match: ['/bundles'] },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
   { label: 'Our Commitment', href: '/our-commitment' },
   { label: 'Testimonials', href: '/testimonials' },

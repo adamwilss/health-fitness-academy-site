@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/about',
     '/courses',
+    '/pricing',
+    '/become-a-personal-trainer',
     '/testimonials',
     '/our-commitment',
     '/blog',

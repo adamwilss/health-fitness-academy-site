@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import type { Course } from '@/data/courses';
+import { fromPrice } from '@/data/courses';
 import LevelBadge from './LevelBadge';
 
 export default function CourseCard({ course }: { course: Course }) {
@@ -20,10 +21,18 @@ export default function CourseCard({ course }: { course: Course }) {
         {course.title}
       </h3>
       <p className="mb-5 flex-1 text-sm leading-relaxed text-muted">{course.tagline}</p>
-      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-        View course
-        <ArrowRight size={15} strokeWidth={2} className="transition-transform group-hover:translate-x-1" />
-      </span>
+      <div className="flex items-end justify-between gap-3 border-t border-line pt-4">
+        <span className="flex flex-col">
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted">
+            From
+          </span>
+          <span className="font-mono text-lg font-semibold text-ink">{fromPrice(course)}</span>
+        </span>
+        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+          View course
+          <ArrowRight size={15} strokeWidth={2} className="transition-transform group-hover:translate-x-1" />
+        </span>
+      </div>
     </a>
   );
 }

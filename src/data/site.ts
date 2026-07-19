@@ -21,6 +21,17 @@ export const SITE = {
     facebookHandle: 'Sakina Khan',
   },
   accreditations: ['OFQUAL', 'CIMSPA', 'Active IQ', 'REPs'],
+  // Headline claims, straight from the official course brochure.
+  stats: {
+    successRate: '100%',
+    employmentRate: '100%',
+    yearsExperience: '20+',
+  },
+  paymentOptions: [
+    'Flexible payment plans on every course',
+    'Interest-free options available',
+    'Spread the cost of your course',
+  ],
   values: [
     {
       name: 'Empowerment',

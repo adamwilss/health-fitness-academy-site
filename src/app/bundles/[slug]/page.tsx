@@ -45,6 +45,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
   if (!bundle) notFound();
 
   const includedCourses = bundle.includes.map((s) => getCourse(s)).filter(Boolean);
+  const enquireHref = `/contact?interest=${encodeURIComponent(bundle.title)}`;
   const testimonial = testimonials[0];
   const alsoIncludes = bundle.alsoIncludes ?? [];
   const qualificationCount = includedCourses.length + alsoIncludes.length;
@@ -138,11 +139,11 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
 
           {/* Hero CTAs */}
           <Reveal delay={240} className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="/contact" className="btn btn-primary btn-lg">
-              Enquire Now
+            <a href={enquireHref} className="btn btn-primary btn-lg">
+              Enquire About This Bundle
             </a>
-            <a href="/contact" className="btn btn-ghost-ink btn-lg">
-              Book a Free Call
+            <a href="/pricing" className="btn btn-ghost-ink btn-lg">
+              Compare All Pricing
             </a>
           </Reveal>
 
@@ -355,16 +356,13 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
               />
 
               <a
-                href="/contact"
+                href={enquireHref}
                 className="btn btn-primary btn-lg mt-5 w-full"
               >
                 Enquire About This Bundle
               </a>
-              <a
-                href="/contact"
-                className="btn btn-ghost-ink btn-md mt-3 w-full"
-              >
-                Book a Free Call
+              <a href={SITE.phoneHref} className="btn btn-ghost-ink btn-md mt-3 w-full">
+                Or call {SITE.phone}
               </a>
             </Reveal>
           </div>
@@ -428,9 +426,9 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
         title="Your PT career won't build itself."
         subtitle="Book a free call. We'll map the bundle, format and timeline that fit your life — no pressure, no hard sell, just a clear next step."
         primaryLabel="Enquire Now"
-        primaryHref="/contact"
-        secondaryLabel="Book a Free Call"
-        secondaryHref="/contact"
+        primaryHref={enquireHref}
+        secondaryLabel="See All Pricing"
+        secondaryHref="/pricing"
       />
 
       <Footer />

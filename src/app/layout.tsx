@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Instrument_Serif, Bricolage_Grotesque, Karla, IBM_Plex_Mono } from 'next/font/google';
 import JsInit from '@/components/JsInit';
 import CookieConsent from '@/components/CookieConsent';
+import { SITE } from '@/data/site';
 import './globals.css';
 
 // Four-typeface system, each carrying a distinct register (see brief):
@@ -47,6 +48,36 @@ export const metadata: Metadata = {
     'An OFQUAL-regulated online and hybrid training academy qualifying women as gym instructors, personal trainers, and Pilates and cycling instructors. Based in Prestwich, Manchester.',
 };
 
+/* Site-wide structured data: LocalBusiness + WebSite, so search and AI
+   surfaces can identify the business, location and contact details. */
+const siteJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${SITE.url}/#business`,
+    name: SITE.name,
+    legalName: SITE.legalName,
+    url: SITE.url,
+    telephone: '+447947846008',
+    email: SITE.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '102 Scholes Lane',
+      addressLocality: 'Prestwich, Manchester',
+      postalCode: 'M25 0AU',
+      addressCountry: 'GB',
+    },
+    sameAs: [SITE.social.instagram, SITE.social.tiktok],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -57,6 +88,10 @@ export default function RootLayout({
     >
       <head>
         <JsInit />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
       </head>
       <body className="bg-bg font-sans text-ink antialiased">
         {children}

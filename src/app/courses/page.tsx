@@ -64,6 +64,8 @@ export default function CoursesIndexPage() {
         eyebrow="Not sure where to start?"
         title="Tell us your goal, we'll point you at the right course."
         subtitle="A short call is often faster than reading ten course pages — book one whenever suits."
+        secondaryLabel="See All Pricing"
+        secondaryHref="/pricing"
         showGlitch
       />
 

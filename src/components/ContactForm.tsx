@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 import { courses } from '@/data/courses';
 import { bundles } from '@/data/bundles';
@@ -16,6 +16,18 @@ const INTEREST_OPTIONS = [
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
+  const [interest, setInterest] = useState(INTEREST_OPTIONS[0]);
+
+  // Course and bundle CTAs link here with ?interest=<title> so the form
+  // arrives preselected — one less step between "I want this" and "sent".
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get('interest');
+    if (!wanted) return;
+    const match = INTEREST_OPTIONS.find(
+      (opt) => opt.toLowerCase() === wanted.toLowerCase(),
+    );
+    if (match) setInterest(match);
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -121,7 +133,8 @@ export default function ContactForm() {
           <select
             id="interest"
             name="interest"
-            defaultValue={INTEREST_OPTIONS[0]}
+            value={interest}
+            onChange={(e) => setInterest(e.target.value)}
             className="field"
           >
             {INTEREST_OPTIONS.map((opt) => (

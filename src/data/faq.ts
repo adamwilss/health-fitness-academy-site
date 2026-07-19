@@ -32,7 +32,7 @@ export const faqs: FaqItem[] = [
   {
     question: 'Can I pay in instalments?',
     answer:
-      'We know these are significant qualifications to invest in, especially while raising a family or between jobs \u2014 get in touch and we\u2019ll talk through what\u2019s possible for your course or bundle.',
+      'Yes. Flexible payment plans are available on every course and bundle \u2014 including interest-free options \u2014 through our finance partners, with flexible or fixed monthly repayments built around your budget. Every course fee is listed openly on our pricing page; get in touch and we\u2019ll match a plan to your situation.',
     bundleRelevant: true,
   },
   {

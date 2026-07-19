@@ -67,6 +67,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Proof ribbon — the numbers behind the promise */}
+      <section className="border-b border-line bg-bg-secondary">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-4">
+          {[
+            { value: SITE.stats.successRate, label: 'Graduate success rate' },
+            { value: SITE.stats.employmentRate, label: 'Employment rate' },
+            { value: SITE.stats.yearsExperience, label: 'Years in the industry' },
+            { value: '£300', label: 'Courses from' },
+          ].map((stat) => (
+            <div key={stat.label} className="bg-card px-6 py-8 text-center">
+              <p className="font-heading text-2xl font-semibold text-brand sm:text-[1.75rem]">
+                {stat.value}
+              </p>
+              <p className="mt-1.5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Founder story teaser */}
       <section className="bg-bg">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -203,6 +224,15 @@ export default function HomePage() {
               </div>
             ))}
           </RevealGroup>
+          <Reveal delay={150} className="mt-10">
+            <a
+              href="/pricing"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand"
+            >
+              Compare every course and bundle price
+              <ArrowRight size={15} strokeWidth={2} />
+            </a>
+          </Reveal>
         </div>
       </section>
 
@@ -276,8 +306,8 @@ export default function HomePage() {
         subtitle="Tell us where you're starting from and what you want to become — we'll help you choose the right course or bundle."
         primaryLabel="Book a Free Call"
         primaryHref="/contact"
-        secondaryLabel="Browse All Courses"
-        secondaryHref="/courses"
+        secondaryLabel="See Course Pricing"
+        secondaryHref="/pricing"
         showGlitch
       />
 

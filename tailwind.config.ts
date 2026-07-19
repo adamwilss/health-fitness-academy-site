@@ -40,6 +40,12 @@ const config: Config = {
       transitionDuration: {
         250: '250ms',
       },
+      boxShadow: {
+        // Considered shadow scale: resting card, lifted card, pressed seal.
+        card: '0 1px 0 rgb(36 27 27 / 0.03), 0 10px 24px -18px rgb(36 27 27 / 0.25)',
+        'card-hover': '0 2px 0 rgb(36 27 27 / 0.03), 0 26px 44px -26px rgb(36 27 27 / 0.3)',
+        seal: '0 1px 0 rgb(36 27 27 / 0.08), 0 6px 14px -8px rgb(36 27 27 / 0.35)',
+      },
     },
   },
   plugins: [],

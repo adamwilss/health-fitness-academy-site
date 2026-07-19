@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Instrument_Serif, Bricolage_Grotesque, Karla, IBM_Plex_Mono } from 'next/font/google';
 import JsInit from '@/components/JsInit';
 import CookieConsent from '@/components/CookieConsent';
+import WalkthroughGuide from '@/components/WalkthroughGuide';
 import { SITE } from '@/data/site';
 import './globals.css';
 
@@ -96,6 +97,7 @@ export default function RootLayout({
       <body className="bg-bg font-sans text-ink antialiased">
         {children}
         <CookieConsent />
+        <WalkthroughGuide />
       </body>
     </html>
   );

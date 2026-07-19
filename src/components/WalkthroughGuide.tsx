@@ -1,0 +1,232 @@
+'use client';
+
+import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft, ArrowRight, X, Check } from 'lucide-react';
+
+const KEY = 'hfa-walkthrough';
+
+interface Step {
+  href: string;
+  title: string;
+  was: string;
+  now: string[];
+}
+
+/* One stop per proof point — each pairs an old-site failure (from the
+   audit) with what the rebuild does instead. */
+const STEPS: Step[] = [
+  {
+    href: '/',
+    title: 'A homepage that sells the story',
+    was: 'A Wix template with a broken “Course Bundles” button and a 2024 copyright.',
+    now: [
+      'Cinematic hero, Sakina’s story, live proof ribbon — 100% success, 100% employment',
+      'Every button goes exactly where it says',
+    ],
+  },
+  {
+    href: '/pricing',
+    title: 'Every price, on the page',
+    was: 'No pricing anywhere on the site — just a PDF brochure link.',
+    now: [
+      'Full fee tables for all 10 courses, straight from your brochure',
+      'Bundle savings worked out to the pound — up to £1,297 off',
+      'Payment plans and interest-free options, front and centre',
+    ],
+  },
+  {
+    href: '/courses',
+    title: 'Courses you can actually browse',
+    was: 'Six “Explore Courses” buttons all led back to the homepage.',
+    now: [
+      'Filter by level — L2, L3, CPD — with the price on every card',
+      'Two bundle pathways presented side by side',
+    ],
+  },
+  {
+    href: '/courses/level-2-gym-instructor',
+    title: 'The whole brochure, on the page',
+    was: 'Course details lived in a PDF nobody opens on a phone.',
+    now: [
+      'Unit-by-unit syllabus, exact qualification awarded, career paths',
+      'Fees card with all three study routes',
+      'Google gets structured course + price data for rich results',
+    ],
+  },
+  {
+    href: '/bundles/womens-empowerment-bundle',
+    title: 'Bundle pages built to convert',
+    was: 'Bundles were a paragraph and a broken link.',
+    now: [
+      'Stats ribbon, included courses, FAQs, testimonial — a full sales page',
+      '“Enquire” arrives with the bundle already selected in the form',
+    ],
+  },
+  {
+    href: '/become-a-personal-trainer',
+    title: 'A landing page ready for ads',
+    was: 'Nowhere to send paid traffic — ads would land on the homepage.',
+    now: [
+      'Lead form above the fold, no menu to leak clicks away',
+      'Every lead arrives tagged with its source and goal',
+      'Sticky call/enquire bar on mobile',
+    ],
+  },
+  {
+    href: '/contact',
+    title: 'Enquiries that reach your inbox',
+    was: 'A basic Wix form, with legal pages pointing at Yell.com.',
+    now: [
+      'Form pre-selects whichever course or bundle they came from',
+      'Own privacy policy and terms — no third-party legal pages',
+    ],
+  },
+  {
+    href: '/faq',
+    title: 'The details, findable',
+    was: 'The FAQ existed but was hidden — not in the navigation at all.',
+    now: [
+      'FAQ in the main nav, instalments answered with real payment-plan info',
+      'Testimonials page with the right heading (old one said “Gym Instruction Courses”)',
+    ],
+  },
+];
+
+export default function WalkthroughGuide() {
+  const router = useRouter();
+  const [step, setStep] = useState<number | null>(null);
+
+  useEffect(() => {
+    const raw = localStorage.getItem(KEY);
+    if (raw !== null) {
+      const n = parseInt(raw, 10);
+      if (!Number.isNaN(n) && n >= 0 && n < STEPS.length) setStep(n);
+    }
+  }, []);
+
+  const exit = useCallback(() => {
+    localStorage.removeItem(KEY);
+    setStep(null);
+  }, []);
+
+  const go = useCallback(
+    (n: number) => {
+      if (n < 0) return;
+      if (n >= STEPS.length) {
+        exit();
+        router.push('/tour');
+        return;
+      }
+      localStorage.setItem(KEY, String(n));
+      setStep(n);
+      router.push(STEPS[n].href);
+    },
+    [exit, router],
+  );
+
+  // Drive it with arrow keys on the call.
+  useEffect(() => {
+    if (step === null) return;
+    function onKey(e: KeyboardEvent) {
+      const target = e.target as HTMLElement | null;
+      if (target && ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)) return;
+      if (e.key === 'ArrowRight') go(step! + 1);
+      if (e.key === 'ArrowLeft') go(step! - 1);
+      if (e.key === 'Escape') exit();
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [step, go, exit]);
+
+  if (step === null) return null;
+  const s = STEPS[step];
+  const last = step === STEPS.length - 1;
+
+  return (
+    <aside
+      aria-label="Site walkthrough"
+      className="rise-in fixed inset-x-3 bottom-3 z-[70] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[400px]"
+    >
+      <div className="overflow-hidden rounded-2xl border border-brand/30 bg-dusk shadow-[0_28px_60px_-20px_rgba(36,27,27,0.6)]">
+        {/* Progress */}
+        <div className="h-1 w-full bg-mist/10">
+          <div
+            className="h-full bg-brand transition-[width] duration-300"
+            style={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
+          />
+        </div>
+
+        <div className="p-5 sm:p-6">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <p className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-brand">
+              Walkthrough &middot; {step + 1} of {STEPS.length}
+            </p>
+            <button
+              type="button"
+              onClick={exit}
+              aria-label="Exit walkthrough"
+              className="flex h-7 w-7 items-center justify-center rounded-full text-muted-dusk transition-colors hover:bg-mist/10 hover:text-mist"
+            >
+              <X size={15} strokeWidth={2} />
+            </button>
+          </div>
+
+          <h2 className="mb-3 font-heading text-lg font-semibold leading-snug text-mist">
+            {s.title}
+          </h2>
+
+          <p className="mb-3 border-l-2 border-mist/15 pl-3 text-[0.8rem] leading-relaxed text-muted-dusk">
+            <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em]">
+              Old site:&nbsp;
+            </span>
+            {s.was}
+          </p>
+
+          <ul className="mb-5 space-y-1.5">
+            {s.now.map((point) => (
+              <li key={point} className="flex items-start gap-2.5 text-[0.8rem] leading-relaxed text-mist">
+                <Check size={14} strokeWidth={2.5} className="mt-0.5 shrink-0 text-brand" />
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => go(step - 1)}
+              disabled={step === 0}
+              className="btn btn-ghost-dusk btn-sm disabled:pointer-events-none disabled:opacity-40"
+            >
+              <ArrowLeft size={14} strokeWidth={2} />
+              Back
+            </button>
+            <button type="button" onClick={() => go(step + 1)} className="btn btn-primary btn-sm">
+              {last ? 'Finish tour' : 'Next stop'}
+              <ArrowRight size={14} strokeWidth={2} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+/** Button that arms walkthrough mode and jumps to the first stop. */
+export function StartWalkthroughButton() {
+  const router = useRouter();
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        localStorage.setItem(KEY, '0');
+        router.push(STEPS[0].href);
+      }}
+      className="btn btn-primary btn-lg w-full sm:w-auto"
+    >
+      Start walkthrough mode
+      <ArrowRight size={16} strokeWidth={2} />
+    </button>
+  );
+}

@@ -25,7 +25,31 @@ export default function AboutPage() {
         eyebrow="Our story"
         title="A space that didn’t exist, until Sakina built it."
         subtitle="Health Fitness Academy started with one woman’s own transformation — and a refusal to let that stay a one-off."
+        epic
       />
+
+      {/* Stats strip — real numbers from existing data */}
+      <Reveal>
+        <section className="bg-bg-secondary">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-4">
+            {[
+              { value: '4', label: 'Qualifications in pathway' },
+              { value: '735', label: 'Study hours (longest bundle)' },
+              { value: '10', label: 'Courses available' },
+              { value: '2', label: 'Bundle pathways' },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card px-6 py-7 text-center">
+                <p className="font-heading text-2xl font-bold text-brand sm:text-3xl">
+                  {stat.value}
+                </p>
+                <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </Reveal>
 
       {/* Founder story */}
       <section className="bg-bg">
@@ -165,6 +189,7 @@ export default function AboutPage() {
         primaryHref="/contact"
         secondaryLabel="Browse Courses"
         secondaryHref="/courses"
+        showGlitch
       />
 
       <Footer />

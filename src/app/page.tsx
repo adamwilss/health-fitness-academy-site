@@ -11,6 +11,7 @@ import LevelBadge from '@/components/LevelBadge';
 import BundleCard from '@/components/BundleCard';
 import CtaBand from '@/components/CtaBand';
 import SealBadge from '@/components/SealBadge';
+import StarRating from '@/components/StarRating';
 import { courses } from '@/data/courses';
 import { bundles } from '@/data/bundles';
 import { testimonials } from '@/data/testimonials';
@@ -55,9 +56,12 @@ export default function HomePage() {
       <section className="border-b border-line bg-bg-secondary">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8">
           <div className="flex flex-wrap items-center justify-center gap-6 sm:justify-between">
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
-              Regulated &amp; accredited by
-            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <StarRating size={14} className="text-brand" />
+              <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
+                Regulated &amp; accredited by
+              </p>
+            </div>
             <div className="flex flex-wrap items-center gap-3">
               {SITE.accreditations.map((body, i) => (
                 <SealBadge key={body} label={body} index={i} />
@@ -278,6 +282,7 @@ export default function HomePage() {
         primaryHref="/contact"
         secondaryLabel="Browse All Courses"
         secondaryHref="/courses"
+        showGlitch
       />
 
       <Footer />

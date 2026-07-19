@@ -28,10 +28,10 @@ export default function CourseFilter({ courses }: { courses: Course[] }) {
               role="tab"
               aria-selected={isActive}
               onClick={() => setActive(tab.level)}
-              className={`rounded-full border px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
+              className={`rounded-full border px-5 py-2.5 font-mono text-xs font-semibold uppercase tracking-[0.08em] transition-all duration-300 ${
                 isActive
-                  ? 'border-brand bg-brand text-on-brand'
-                  : 'border-line bg-card text-muted hover:border-brand/40 hover:text-ink'
+                  ? 'border-brand bg-brand text-on-brand shadow-[0_8px_20px_-6px_rgb(var(--brand)/0.5)]'
+                  : 'border-line bg-card text-muted hover:border-brand/40 hover:text-ink hover:bg-brand/5'
               }`}
             >
               {tab.label}

@@ -9,6 +9,8 @@ import Ledger from '@/components/Ledger';
 import LevelBadge from '@/components/LevelBadge';
 import CourseCard from '@/components/CourseCard';
 import CtaBand from '@/components/CtaBand';
+import StarRating from '@/components/StarRating';
+import SealBadge from '@/components/SealBadge';
 import { courses, getCourse } from '@/data/courses';
 import { getBundle } from '@/data/bundles';
 
@@ -52,7 +54,31 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   return (
     <main className="relative">
       <Nav />
-      <PageHeader eyebrow={course.cpd ? 'CPD add-on' : `${course.levelLabel} qualification`} title={course.title} subtitle={course.tagline} />
+      <PageHeader
+        eyebrow={course.cpd ? 'CPD add-on' : `${course.levelLabel} qualification`}
+        title={course.title}
+        subtitle={course.tagline}
+        epic
+      />
+
+      {/* Trust line — consistent with bundle pages */}
+      <section className="border-b border-line bg-bg-secondary">
+        <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:justify-between">
+            <div className="flex flex-wrap items-center gap-3">
+              <StarRating size={14} className="text-brand" />
+              <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
+                {course.levelLabel} — OFQUAL regulated
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              {course.accreditations.map((body, i) => (
+                <SealBadge key={body} label={body} index={i} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-bg">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
@@ -138,6 +164,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
         eyebrow="Ready to enrol?"
         title="Speak to us before you commit."
         subtitle="We'll help you decide between this course, a bundle, or a different starting point entirely."
+        showGlitch
       />
 
       <Footer />

@@ -5,6 +5,8 @@ import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
 import Reveal from '@/components/Reveal';
 import ContactForm from '@/components/ContactForm';
+import SealBadge from '@/components/SealBadge';
+import StarRating from '@/components/StarRating';
 import { InstagramIcon } from '@/components/SocialIcons';
 import { SITE } from '@/data/site';
 
@@ -22,12 +24,20 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Let’s get you started."
         subtitle="Send a message, call, or drop by our details below — we reply to every enquiry within one working day."
+        epic
       />
 
       <section className="bg-bg">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <Reveal>
             <ContactForm />
+            {/* Trust line below form */}
+            <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-line pt-6">
+              <StarRating size={14} className="text-brand" />
+              <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
+                OFQUAL-regulated &middot; CIMSPA &middot; Active IQ &middot; REPs
+              </p>
+            </div>
           </Reveal>
 
           <Reveal variant="right" delay={100}>

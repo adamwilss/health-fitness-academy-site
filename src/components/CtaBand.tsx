@@ -6,6 +6,7 @@ export default function CtaBand({
   primaryHref = '/contact',
   secondaryLabel,
   secondaryHref,
+  showGlitch,
 }: {
   eyebrow: string;
   title: string;
@@ -14,9 +15,18 @@ export default function CtaBand({
   primaryHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  showGlitch?: boolean;
 }) {
   return (
     <section className="relative overflow-hidden bg-dusk">
+      {/* Glitch texture at low opacity for visual bite */}
+      {showGlitch && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.04]"
+          style={{ backgroundImage: 'url(/hfa-logo-glitch.jpg)' }}
+        />
+      )}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-32 -bottom-32 h-[420px] w-[420px] rounded-full"

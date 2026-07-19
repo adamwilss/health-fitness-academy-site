@@ -48,13 +48,18 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-dusk">
-      {/* Layered texture: ruled ledger feint + warm saffron / moss glows. */}
-      <div aria-hidden className="bg-ledger-lines-dusk pointer-events-none absolute inset-0" />
+      {/* Ambient grid + saffron glow — epic treatment */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hero-grid opacity-40" />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgb(var(--brand) / 0.16) 0%, transparent 70%)' }}
+        className="pointer-events-none absolute -right-32 -top-24 h-[520px] w-[520px] rounded-full animate-slow-pulse"
+        style={{
+          background:
+            'radial-gradient(circle, rgb(var(--brand) / 0.16) 0%, transparent 62%)',
+        }}
       />
+      {/* Layered texture: ruled ledger feint + warm saffron / moss glows. */}
+      <div aria-hidden className="bg-ledger-lines-dusk pointer-events-none absolute inset-0" />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-24 bottom-0 h-[380px] w-[380px] rounded-full"

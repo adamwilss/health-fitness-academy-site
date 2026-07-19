@@ -15,7 +15,7 @@ import type { CSSProperties } from 'react';
 export const metadata: Metadata = {
   title: 'Courses & Bundles',
   description:
-    'Ten OFQUAL-regulated fitness qualifications and two bundle pathways — from Level 2 Gym Instructor through Level 3 Personal Trainer, Pilates, cycling, and CPD specialisms.',
+    'Ten OFQUAL-regulated fitness qualifications and two bundle pathways - from Level 2 Gym Instructor through Level 3 Personal Trainer, Pilates, cycling, and CPD specialisms.',
 };
 
 export default function CoursesIndexPage() {
@@ -26,6 +26,7 @@ export default function CoursesIndexPage() {
         eyebrow="Courses & bundles"
         title="Ten courses, two bundles, one continuous pathway."
         subtitle="Filter by level to find your starting point — every course leads somewhere real."
+        epic
       />
 
       <section className="bg-bg">
@@ -37,7 +38,7 @@ export default function CoursesIndexPage() {
       <section className="border-t border-line bg-bg-secondary" id="bundles">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <SectionLabel label="Bundles" />
+            <SectionLabel label="Bundles" tone="brand" />
             <h2 className="mb-4 max-w-2xl font-heading text-[clamp(1.75rem,3.6vw,2.5rem)] font-semibold leading-[1.15] text-ink">
               Prefer one enrolment, one continuous pathway?
             </h2>
@@ -62,8 +63,9 @@ export default function CoursesIndexPage() {
 
       <CtaBand
         eyebrow="Not sure where to start?"
-        title="Tell us your goal, we’ll point you at the right course."
+        title="Tell us your goal, we'll point you at the right course."
         subtitle="A short call is often faster than reading ten course pages — book one whenever suits."
+        showGlitch
       />
 
       <Footer />

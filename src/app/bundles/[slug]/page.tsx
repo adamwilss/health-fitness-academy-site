@@ -9,6 +9,7 @@ import LevelBadge from '@/components/LevelBadge';
 import SectionLabel from '@/components/SectionLabel';
 import Accordion from '@/components/Accordion';
 import CourseCard from '@/components/CourseCard';
+import StarRating from '@/components/StarRating';
 import { bundles, getBundle } from '@/data/bundles';
 import { getCourse } from '@/data/courses';
 import { SITE } from '@/data/site';
@@ -361,7 +362,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i * 100}>
                 <div className="card-lift rounded-2xl border border-line bg-card p-6 sm:p-7">
-                  <div className="mb-4 text-brand">★★★★★</div>
+                  <StarRating className="mb-4 text-brand" />
                   <p className="mb-6 text-sm leading-relaxed text-muted italic">
                     &ldquo;{t.quote}&rdquo;
                   </p>

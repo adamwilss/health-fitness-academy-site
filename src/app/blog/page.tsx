@@ -53,7 +53,7 @@ export default function BlogIndexPage() {
 
           <Reveal delay={200} className="mt-10">
             <p className="text-center text-sm leading-relaxed text-muted">
-              More stories coming soon - this is just the first.
+              More stories coming soon — this is just the first.
             </p>
           </Reveal>
         </div>

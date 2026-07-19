@@ -86,7 +86,7 @@ export default function ContactForm() {
             type="text"
             required
             maxLength={120}
-            className="w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
+            className="field"
           />
         </div>
         <div>
@@ -99,7 +99,7 @@ export default function ContactForm() {
             type="email"
             required
             maxLength={254}
-            className="w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
+            className="field"
           />
         </div>
         <div>
@@ -111,7 +111,7 @@ export default function ContactForm() {
             name="phone"
             type="tel"
             maxLength={40}
-            className="w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
+            className="field"
           />
         </div>
         <div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
             id="interest"
             name="interest"
             defaultValue={INTEREST_OPTIONS[0]}
-            className="w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
+            className="field"
           >
             {INTEREST_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -144,7 +144,7 @@ export default function ContactForm() {
           rows={5}
           maxLength={4000}
           placeholder="Tell us a bit about where you're starting from and what you'd like to achieve."
-          className="w-full rounded-lg border border-line bg-bg px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-brand"
+          className="field"
         />
       </div>
 
@@ -153,7 +153,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-lg bg-brand px-8 text-sm font-bold tracking-[0.01em] text-on-brand transition-transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 sm:w-auto"
+        className="btn btn-primary btn-lg mt-6 w-full disabled:opacity-70 sm:w-auto"
       >
         {status === 'loading' && <Loader2 size={16} className="animate-spin" />}
         {status === 'loading' ? 'Sending…' : 'Send Message'}

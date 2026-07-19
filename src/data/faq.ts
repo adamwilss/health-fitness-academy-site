@@ -54,7 +54,7 @@ export const faqs: FaqItem[] = [
   {
     question: 'How do I choose between a single course and a bundle?',
     answer:
-      'If you already know you want to reach personal trainer level, or want the widest possible qualification base, a bundle works out better value and keeps you on one continuous pathway. If\u2019re starting with a single specific goal \u2014 say, teaching Pilates \u2014 a single course may be all you need for now, and you can always add more later.',
+      'If you already know you want to reach personal trainer level, or want the widest possible qualification base, a bundle works out better value and keeps you on one continuous pathway. If you\u2019re starting with a single specific goal \u2014 say, teaching Pilates \u2014 a single course may be all you need for now, and you can always add more later.',
     bundleRelevant: true,
   },
 ];

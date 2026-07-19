@@ -13,7 +13,7 @@ import { SITE } from '@/data/site';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Get in touch with Health Fitness Academy in Prestwich, Manchester - call, email, or send a message about any course or bundle.',
+    'Get in touch with Health Fitness Academy in Prestwich, Manchester — call, email, or send a message about any course or bundle.',
 };
 
 export default function ContactPage() {

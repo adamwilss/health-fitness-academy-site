@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Quote } from 'lucide-react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Reveal from '@/components/Reveal';
@@ -44,6 +45,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
   if (!bundle) notFound();
 
   const includedCourses = bundle.includes.map((s) => getCourse(s)).filter(Boolean);
+  const testimonial = testimonials[0];
   const alsoIncludes = bundle.alsoIncludes ?? [];
   const qualificationCount = includedCourses.length + alsoIncludes.length;
   const otherBundle = bundles.find((b) => b.slug !== bundle.slug);
@@ -94,7 +96,7 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
         />
         <div className="relative mx-auto max-w-6xl px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
           <Reveal>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/8 px-4 py-1.5">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 px-4 py-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
               <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-brand">
                 {bundle.eyebrow}
@@ -151,10 +153,9 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
               <span className="text-sm font-medium text-muted">Rated by students</span>
             </div>
             <div className="flex items-center gap-3">
-              <SealBadge label="OFQUAL" index={0} />
-              <SealBadge label="CIMSPA" index={1} />
-              <SealBadge label="Active" index={2} />
-              <SealBadge label="REPs" index={3} />
+              {SITE.accreditations.map((body, i) => (
+                <SealBadge key={body} label={body} index={i} />
+              ))}
             </div>
           </Reveal>
         </div>
@@ -370,7 +371,9 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {/* ── Testimonials ────────────────────────────────────────────── */}
+      {/* ── Testimonial — editorial pull-quote, consistent with the home
+             and testimonials pages. One real story, given real weight,
+             rather than a lone card stranded in a grid. ─────────────── */}
       <section className="bg-bg-secondary py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal>
@@ -379,32 +382,28 @@ export default async function BundlePage({ params }: { params: Promise<{ slug: s
               What our students say
             </h2>
             <p className="mb-12 max-w-xl text-base leading-relaxed text-muted">
-              Real results from people who took the same pathway you&rsquo;re
-              considering.
+              Real words from a student who trained with Sakina and went on to
+              build her own career in the industry.
             </p>
           </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={i * 100}>
-                <div className="card-lift rounded-2xl border border-line bg-card p-6 sm:p-7">
-                  <StarRating className="mb-4 text-brand" />
-                  <p className="mb-6 text-sm leading-relaxed text-muted italic">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand/10 font-heading text-sm font-bold text-brand">
-                      {t.name.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-ink">{t.name}</p>
-                      <p className="text-xs text-muted">{t.role}</p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={100}>
+            <blockquote className="relative max-w-3xl rounded-2xl bg-dusk p-8 sm:p-12">
+              <Quote size={36} strokeWidth={1.25} className="mb-5 text-brand" aria-hidden />
+              <p className="font-serif text-xl italic leading-relaxed text-mist sm:text-2xl">
+                &ldquo;{testimonial.quote}&rdquo;
+              </p>
+              <footer className="mt-7 flex flex-col gap-1.5 border-t border-mist/10 pt-6">
+                <StarRating size={14} className="mb-1 text-brand" />
+                <p className="font-mono text-sm font-semibold tracking-[0.03em] text-mist">
+                  {testimonial.name}
+                </p>
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-dusk">
+                  {testimonial.role}
+                </p>
+              </footer>
+            </blockquote>
+          </Reveal>
         </div>
       </section>
 

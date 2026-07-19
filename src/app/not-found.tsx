@@ -24,16 +24,10 @@ export default function NotFound() {
             exactly where it says it will.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="/"
-              className="inline-flex min-h-14 w-full items-center justify-center rounded-lg bg-brand px-8 text-sm font-bold tracking-[0.01em] text-on-brand transition-transform hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
-            >
+            <a href="/" className="btn btn-primary btn-lg w-full sm:w-auto">
               Back to Home
             </a>
-            <a
-              href="/courses"
-              className="inline-flex min-h-14 w-full items-center justify-center rounded-lg border border-line px-8 text-sm font-semibold text-ink transition-colors hover:border-ink/30 sm:w-auto"
-            >
+            <a href="/courses" className="btn btn-ghost-ink btn-lg w-full sm:w-auto">
               Browse Courses
             </a>
           </div>

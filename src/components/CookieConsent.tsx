@@ -35,16 +35,10 @@ export default function CookieConsent() {
           </a>
         </p>
         <div className="flex shrink-0 gap-3">
-          <button
-            onClick={handleDecline}
-            className="rounded-lg border border-line px-5 py-2.5 text-sm font-medium text-muted transition-colors hover:border-brand/40 hover:text-ink"
-          >
+          <button onClick={handleDecline} className="btn btn-ghost-ink btn-sm">
             Decline
           </button>
-          <button
-            onClick={handleAccept}
-            className="rounded-lg bg-brand px-5 py-2.5 text-sm font-bold text-on-brand transition-transform hover:scale-[1.02] active:scale-[0.98]"
-          >
+          <button onClick={handleAccept} className="btn btn-primary btn-sm">
             Accept
           </button>
         </div>

@@ -15,7 +15,7 @@ import type { CSSProperties } from 'react';
 export const metadata: Metadata = {
   title: 'Courses & Bundles',
   description:
-    'Ten OFQUAL-regulated fitness qualifications and two bundle pathways - from Level 2 Gym Instructor through Level 3 Personal Trainer, Pilates, cycling, and CPD specialisms.',
+    'Ten OFQUAL-regulated fitness qualifications and two bundle pathways — from Level 2 Gym Instructor through Level 3 Personal Trainer, Pilates, cycling, and CPD specialisms.',
 };
 
 export default function CoursesIndexPage() {

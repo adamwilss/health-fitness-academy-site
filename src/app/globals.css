@@ -516,3 +516,20 @@ html.js .reveal-group.is-visible .scroll-reveal {
   background-clip: text;
   color: transparent;
 }
+
+/* Editorial design system */
+@layer components {
+  .btn-editorial {
+    @apply inline-flex items-center justify-center gap-2 font-mono uppercase tracking-[0.13em] text-[0.6rem] sm:text-[0.62rem] font-medium px-6 py-3.5 rounded transition-all duration-200;
+  }
+  .btn-editorial-orange {
+    @apply bg-[#C45A2E] text-white hover:bg-[#D96D3E];
+  }
+  .btn-editorial-ghost {
+    @apply border border-white/35 text-white bg-transparent hover:bg-white/[0.08] hover:border-white/55;
+  }
+  .btn-editorial-outline {
+    @apply border border-[#C45A2E] text-[#C45A2E] bg-transparent hover:bg-[#C45A2E] hover:text-white;
+  }
+}
+

@@ -80,7 +80,7 @@ export default function Hero() {
           fill
           priority
           quality={90}
-          className="object-cover object-[center_25%] brightness-[0.62] saturate-[0.85]"
+          className="object-cover object-left brightness-[0.5] saturate-[0.8]"
           sizes="100vw"
         />
       </div>
@@ -88,7 +88,7 @@ export default function Hero() {
         className="absolute inset-0 z-[1]"
         style={{
           background:
-            'linear-gradient(100deg, rgba(20,22,24,0.95) 0%, rgba(20,22,24,0.78) 40%, rgba(20,22,24,0.42) 68%, rgba(20,22,24,0.2) 100%)',
+            'linear-gradient(100deg, rgba(20,22,24,0.96) 0%, rgba(20,22,24,0.86) 35%, rgba(20,22,24,0.70) 58%, rgba(20,22,24,0.48) 100%)',
         }}
       />
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 pt-32 sm:pt-44 lg:pt-56 pb-24 sm:pb-36">
@@ -96,7 +96,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mb-7 block font-mono text-[0.6rem] sm:text-[0.65rem] font-medium uppercase tracking-[0.22em] text-[#F2EEE6]/75"
+          className="mb-7 block font-mono text-[0.6rem] sm:text-[0.65rem] font-medium uppercase tracking-[0.22em] text-[#F2EEE6]/83 drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]"
         >
           OFQUAL regulated &middot; CIMSPA &middot; Active IQ &middot; REPs accredited
         </motion.span>
@@ -105,7 +105,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-[720px] font-serif text-[clamp(2.6rem,5vw,4.4rem)] font-medium leading-[1.05] text-white"
+          className="max-w-[720px] font-serif text-[clamp(2.6rem,5vw,4.4rem)] font-medium leading-[1.05] text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.55)]"
         >
           <span className="block">Qualified by women.</span>
           <span className="block">Built for women.</span>
@@ -134,7 +134,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
-          className="mt-7 max-w-[580px] text-base sm:text-[1.05rem] leading-relaxed text-white/84"
+          className="mt-7 max-w-[580px] text-base sm:text-[1.05rem] leading-relaxed text-white/[0.9] drop-shadow-[0_2px_16px_rgba(0,0,0,0.5)]"
         >
           Health Fitness Academy trains women in Prestwich and online across the UK to become gym instructors, personal trainers, and Pilates and cycling instructors, with accredited qualifications taught by women who have built the same career themselves.
         </motion.p>

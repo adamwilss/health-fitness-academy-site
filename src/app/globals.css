@@ -517,6 +517,15 @@ html.js .reveal-group.is-visible .scroll-reveal {
   color: transparent;
 }
 
+/* Mobile menu visibility */
+body.menu-open { overflow: hidden; }
+body.menu-open .mobile-menu { display: flex; }
+.mobile-menu { display: none; animation: menuFadeIn 250ms ease forwards; }
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Editorial design system */
 @layer components {
   .btn-editorial {

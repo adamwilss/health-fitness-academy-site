@@ -520,9 +520,14 @@ html.js .reveal-group.is-visible .scroll-reveal {
 /* Mobile menu visibility */
 body.menu-open { overflow: hidden; }
 body.menu-open .mobile-menu { display: flex; }
-.mobile-menu { display: none; animation: menuFadeIn 250ms ease forwards; }
+.mobile-menu { display: none; animation: menuFadeIn 360ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.mobile-menu .menu-item { opacity: 0; animation: menuItemIn 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards; animation-delay: var(--mi-delay, 0ms); }
 @keyframes menuFadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes menuItemIn {
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
 

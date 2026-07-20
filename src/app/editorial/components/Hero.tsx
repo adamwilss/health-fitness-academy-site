@@ -1,7 +1,5 @@
 'use client';
 
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -10,43 +8,43 @@ export default function Hero() {
   return (
     <section className="relative isolate flex min-h-screen items-center overflow-hidden bg-[#141618]">
       {/* Header — shared across hero */}
-      <header className="fixed top-0 left-0 right-0 z-[100] py-4 sm:py-5 bg-gradient-to-b from-[#141618]/70 to-transparent data-[scrolled]:bg-[#141618]/92 data-[scrolled]:backdrop-blur-md transition-colors duration-300" id="main-header">
-        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 text-white">
-            <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#C45A2E] grid place-items-center font-serif text-[0.75rem] sm:text-[0.85rem] font-semibold leading-none">H</span>
-            <span className="text-[0.8rem] sm:text-[0.9rem] font-medium leading-tight tracking-[-0.01em]">
+      <header className="fixed top-0 left-0 right-0 z-[100] bg-[#141618]/90 backdrop-blur-md border-b border-white/[0.08]" id="main-header">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-16 sm:h-18 lg:h-20">
+          <a href="/" className="flex items-center gap-3 text-white group">
+            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#C45A2E] grid place-items-center font-serif text-[0.85rem] sm:text-[0.95rem] font-semibold leading-none transition-transform group-hover:scale-105">H</span>
+            <span className="text-[0.82rem] sm:text-[0.92rem] font-medium leading-tight tracking-[-0.01em]">
               Health Fitness Academy
               <span className="hidden sm:block text-[0.5rem] font-normal tracking-[0.14em] uppercase opacity-70 mt-0.5">Prestwich, Manchester</span>
             </span>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#courses" className="text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Courses</a>
-            <a href="#how" className="text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">How It Works</a>
-            <a href="#why" className="text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Why Us</a>
-            <a href="#stories" className="text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Success Stories</a>
-            <a href="#about" className="text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">About</a>
-            <a href="#resources" className="text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Resources</a>
+          <nav className="hidden md:flex items-center gap-7 lg:gap-8">
+            <a href="#courses" className="text-[0.75rem] lg:text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Courses</a>
+            <a href="#how" className="text-[0.75rem] lg:text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">How It Works</a>
+            <a href="#why" className="text-[0.75rem] lg:text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Why Us</a>
+            <a href="#stories" className="text-[0.75rem] lg:text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Success Stories</a>
+            <a href="#about" className="text-[0.75rem] lg:text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">About</a>
+            <a href="#resources" className="text-[0.75rem] lg:text-[0.78rem] font-medium text-white/80 hover:text-white transition-colors">Resources</a>
             <a href="#contact" className="btn-editorial btn-editorial-orange">Enquire Now</a>
           </nav>
 
           {/* Mobile menu toggle */}
           <button
-            className="md:hidden group relative w-10 h-10 rounded-full border border-white/20 bg-white/5 flex flex-col items-center justify-center gap-1.5 transition-colors hover:bg-white/10"
+            className="md:hidden relative w-11 h-11 rounded-full border border-white/20 bg-white/[0.06] flex flex-col items-center justify-center gap-1.5 transition-colors hover:bg-white/10 active:scale-95"
             aria-label="Open menu"
             onClick={() => document.body.classList.add('menu-open')}
           >
-            <span className="block w-5 h-px bg-white transition-transform origin-center group-hover:bg-[#C45A2E]" />
-            <span className="block w-5 h-px bg-white transition-opacity group-hover:bg-[#C45A2E]" />
-            <span className="block w-5 h-px bg-white transition-transform origin-center group-hover:bg-[#C45A2E]" />
+            <span className="block w-5 h-px bg-white" />
+            <span className="block w-5 h-px bg-white" />
+            <span className="block w-5 h-px bg-white" />
           </button>
         </div>
 
         {/* Mobile full-screen menu */}
         <div className="mobile-menu fixed inset-0 z-[110] bg-[#141618]/98 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden">
           <button
-            className="absolute top-4 right-6 w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-white/80 hover:text-white hover:border-white/35 transition-colors"
+            className="absolute top-4 right-5 w-12 h-12 rounded-full border border-white/15 flex items-center justify-center text-white/80 hover:text-white hover:border-white/35 transition-colors active:scale-95"
             aria-label="Close menu"
             onClick={() => document.body.classList.remove('menu-open')}
           >
@@ -60,18 +58,19 @@ export default function Hero() {
               { label: 'Success Stories', href: '#stories' },
               { label: 'About', href: '#about' },
               { label: 'Resources', href: '#resources' },
-            ].map((item) => (
+            ].map((item, idx) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={() => document.body.classList.remove('menu-open')}
-                className="font-serif text-[2rem] sm:text-[2.4rem] font-medium text-white/90 hover:text-[#C45A2E] transition-colors leading-none"
+                className="menu-item font-serif text-[2.2rem] sm:text-[2.6rem] font-medium text-white/90 hover:text-[#C45A2E] transition-colors leading-none"
+                style={{ '--mi-delay': `${idx * 40}ms` } as React.CSSProperties}
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          <a href="#contact" onClick={() => document.body.classList.remove('menu-open')} className="btn-editorial btn-editorial-orange mt-10 w-full max-w-xs">Enquire Now</a>
+          <a href="#contact" onClick={() => document.body.classList.remove('menu-open')} className="menu-item btn-editorial btn-editorial-orange mt-10 w-full max-w-xs" style={{ '--mi-delay': '240ms' } as React.CSSProperties}>Enquire Now</a>
         </div>
       </header>
       <div className="absolute inset-0 z-0">
@@ -92,7 +91,7 @@ export default function Hero() {
             'linear-gradient(100deg, rgba(20,22,24,0.95) 0%, rgba(20,22,24,0.78) 40%, rgba(20,22,24,0.42) 68%, rgba(20,22,24,0.2) 100%)',
         }}
       />
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-24 sm:pt-48 sm:pb-36 lg:pt-60 lg:pb-48">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 pt-32 sm:pt-44 lg:pt-56 pb-24 sm:pb-36">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
